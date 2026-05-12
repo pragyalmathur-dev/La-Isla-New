@@ -24,6 +24,8 @@ const ANCHOR = { lat: 14.95017, lng: 74.05339 };
 
 const BEACH_LOC = { lat: 14.961497, lng: 74.048541 };
 const TALPONA_BEACH_LOC = { lat: 14.976814, lng: 74.042358 };
+const NIRAKAR_GROUND_LOC = { lat: 14.948755, lng: 74.056363 };
+const SCHOOL_LOC = { lat: 14.948146, lng: 74.056558 };
 const LALIT_LOC = { lat: 14.991451, lng: 74.042100 };
 const NH66_LABEL_LOC = { lat: 14.951625, lng: 74.054830 };
 const NH66_LABEL_LOC_2 = { lat: 14.993460, lng: 74.043818 };
@@ -398,7 +400,7 @@ export default function App() {
             position={[BEACH_LOC.lat, BEACH_LOC.lng]} 
             icon={beachIcon}
           >
-            <Tooltip permanent={true} direction="top" offset={[0, -32]} className="custom-tooltip">
+            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
               Galgibaga Beach
             </Tooltip>
           </Marker>
@@ -407,7 +409,7 @@ export default function App() {
             position={[TALPONA_BEACH_LOC.lat, TALPONA_BEACH_LOC.lng]} 
             icon={beachIcon}
           >
-            <Tooltip permanent={true} direction="top" offset={[0, -32]} className="custom-tooltip">
+            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
               Talpona Beach
             </Tooltip>
           </Marker>
@@ -416,8 +418,26 @@ export default function App() {
             position={[LALIT_LOC.lat, LALIT_LOC.lng]} 
             icon={beachIcon}
           >
-            <Tooltip permanent={true} direction="top" offset={[0, -32]} className="custom-tooltip">
+            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
               The Lalit Golf & Spa Resort
+            </Tooltip>
+          </Marker>
+
+          <Marker 
+            position={[NIRAKAR_GROUND_LOC.lat, NIRAKAR_GROUND_LOC.lng]} 
+            icon={beachIcon}
+          >
+            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+              Nirakar Cricket Ground
+            </Tooltip>
+          </Marker>
+
+          <Marker 
+            position={[SCHOOL_LOC.lat, SCHOOL_LOC.lng]} 
+            icon={beachIcon}
+          >
+            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+              S S Angle Higher Secondary School
             </Tooltip>
           </Marker>
 
@@ -429,6 +449,18 @@ export default function App() {
             <Tooltip permanent={false}>Site Entry Gate</Tooltip>
           </CircleMarker>
         </MapContainer>
+
+        {/* Map Interaction Hint */}
+        <div className="absolute bottom-6 right-6 z-[1000] bg-white/95 backdrop-blur-md px-4 py-3 rounded-xl border border-[#e3dcce] shadow-2xl max-w-[220px] pointer-events-none sm:pointer-events-auto">
+          <div className="flex gap-3 items-start">
+            <div className="p-1.5 bg-[#e9efe5] rounded-full text-[#4a6b43] mt-0.5">
+              <Info size={14} />
+            </div>
+            <p className="text-[10px] text-[#4a5249] leading-relaxed font-semibold">
+              To view the location names, hover over them with your cursor. On mobile, simply tap the location.
+            </p>
+          </div>
+        </div>
       </main>
 
       {/* Villa Modal */}
