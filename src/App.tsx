@@ -20,6 +20,26 @@ const REPO_BASE = 'https://raw.githubusercontent.com/pragyalmathur-dev/La-Isla/m
 const ASSET_SITEPLAN = `${REPO_BASE}assets/siteplan.webp`;
 const ASSET_VILLAS_JSON = `${REPO_BASE}villas.json`;
 
+const PROJECT_RENDERS: Record<string, string | string[]> = {
+  'Aerial View': './aerial_view.jpg',
+  '2 BHK': [
+    './2bhk_balcony.jpg',
+    './2bhk_exterior.jpg',
+    './2bhk_facade.jpg'
+  ],
+  '3 BHK': [
+    './3bhk_ext_1.jpg',
+    './3bhk_terrace.jpg',
+    './3bhk_ext_2.jpg'
+  ],
+  '4 BHK': [
+    './4bhk_exterior.jpg',
+    './4bhk_facade.jpg',
+    './4bhk_balcony.jpg',
+    './4bhk_terrace.jpg'
+  ]
+};
+
 // Final Anchor from user calibration
 const ANCHOR = { lat: 14.95017, lng: 74.05339 };
 
@@ -160,6 +180,7 @@ export default function App() {
   const [villas, setVillas] = useState<Villa[]>([]);
   const [selectedVilla, setSelectedVilla] = useState<Villa | null>(null);
   const [selectedRender, setSelectedRender] = useState<string | null>(null);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [floor, setFloor] = useState<'gf' | 'ff'>('gf');
   const [mode, setMode] = useState<'wd' | 'wod'>('wd');
   const [mapType, setMapType] = useState<'sat' | 'street' | 'hybrid'>('sat');
@@ -615,39 +636,107 @@ export default function App() {
                 onClick={e => e.stopPropagation()}
               >
                 <div className="flex-none flex items-center justify-between p-4 lg:p-6 border-b border-[#e3dcce] bg-linear-to-b from-[#fbf8f1] to-white">
-                  <h3 className="text-xl lg:text-2xl font-cardo text-[#4a6b43]">{selectedRender}</h3>
+                  <div className="flex flex-col">
+                    <h3 className="text-xl lg:text-2xl font-cardo text-[#4a6b43]">{selectedRender}</h3>
+                    {Array.isArray(PROJECT_RENDERS[selectedRender]) && (
+                      <p className="text-[10px] text-[#8a8676] uppercase tracking-widest font-bold mt-1">
+                        Perspective {activeImageIndex + 1} of {(PROJECT_RENDERS[selectedRender] as string[]).length}
+                      </p>
+                    )}
+                  </div>
                   <button 
-                    onClick={() => setSelectedRender(null)}
+                    onClick={() => {
+                      setSelectedRender(null);
+                      setActiveImageIndex(0);
+                    }}
                     className="p-2 hover:bg-[#e9efe5] rounded-full transition-colors text-[#8a8676]"
                   >
                     <X size={24} />
                   </button>
                 </div>
 
-                <div className="flex-1 min-h-0 bg-[#f1ece1] relative overflow-hidden flex items-center justify-center p-6 lg:p-12">
-                  <div className="w-full h-full flex flex-col items-center justify-center gap-6">
-                    <div className="relative group cursor-zoom-in">
-                      <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors rounded"></div>
-                      {/* Placeholder until user uploads actual renders */}
-                      <div className="w-[800px] h-[500px] bg-white shadow-2xl rounded flex flex-col items-center justify-center border-2 border-dashed border-[#cdc3b1] p-12 text-center">
-                        <div className="w-20 h-20 bg-[#e9efe5] rounded-full flex items-center justify-center mb-6 text-[#4a6b43]">
-                          <Maximize size={40} />
+                <div className="flex-1 min-h-0 bg-[#f1ece1] relative overflow-hidden flex items-center justify-center p-4 lg:p-12">
+                  {PROJECT_RENDERS[selectedRender] ? (
+                    <div className="w-full h-full flex flex-col items-center justify-center gap-6">
+                      <div className="flex-1 w-full flex items-center justify-center relative group">
+                        {Array.isArray(PROJECT_RENDERS[selectedRender]) ? (
+                          <>
+                            <img 
+                              key={activeImageIndex}
+                              src={(PROJECT_RENDERS[selectedRender] as string[])[activeImageIndex]} 
+                              alt={`${selectedRender} - ${activeImageIndex + 1}`} 
+                              className="max-w-full max-h-full object-contain bg-white shadow-2xl rounded lg:p-2 cursor-zoom-in"
+                              onClick={() => window.open((PROJECT_RENDERS[selectedRender] as string[])[activeImageIndex], '_blank')}
+                            />
+                            
+                            {(PROJECT_RENDERS[selectedRender] as string[]).length > 1 && (
+                              <>
+                                <button 
+                                  onClick={() => setActiveImageIndex(prev => (prev > 0 ? prev - 1 : (PROJECT_RENDERS[selectedRender] as string[]).length - 1))}
+                                  className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 hover:bg-white rounded-full shadow-xl text-[#4a6b43] transition-all opacity-0 group-hover:opacity-100 hidden sm:block"
+                                >
+                                  <ChevronRight size={24} className="rotate-180" />
+                                </button>
+                                <button 
+                                  onClick={() => setActiveImageIndex(prev => (prev < (PROJECT_RENDERS[selectedRender] as string[]).length - 1 ? prev + 1 : 0))}
+                                  className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 hover:bg-white rounded-full shadow-xl text-[#4a6b43] transition-all opacity-0 group-hover:opacity-100 hidden sm:block"
+                                >
+                                  <ChevronRight size={24} />
+                                </button>
+                              </>
+                            )}
+                          </>
+                        ) : (
+                          <img 
+                            src={PROJECT_RENDERS[selectedRender] as string} 
+                            alt={selectedRender} 
+                            className="max-w-full max-h-full object-contain bg-white shadow-2xl rounded lg:p-2 cursor-zoom-in"
+                            onClick={() => window.open(PROJECT_RENDERS[selectedRender] as string, '_blank')}
+                          />
+                        )}
+                      </div>
+
+                      {Array.isArray(PROJECT_RENDERS[selectedRender]) && (PROJECT_RENDERS[selectedRender] as string[]).length > 1 && (
+                        <div className="flex-none flex gap-3 overflow-x-auto pb-4 max-w-full px-4 scroll-smooth">
+                          {(PROJECT_RENDERS[selectedRender] as string[]).map((img, idx) => (
+                            <button
+                              key={idx}
+                              onClick={() => setActiveImageIndex(idx)}
+                              className={`flex-none w-24 aspect-video rounded-lg overflow-hidden border-2 transition-all ${
+                                activeImageIndex === idx ? 'border-[#4a6b43] scale-105 shadow-lg' : 'border-white hover:border-[#cdc3b1] opacity-60 hover:opacity-100'
+                              }`}
+                            >
+                              <img src={img} alt={`Thumb ${idx + 1}`} className="w-full h-full object-cover" />
+                            </button>
+                          ))}
                         </div>
-                        <h4 className="text-2xl font-cardo text-[#4a6b43] mb-4">{selectedRender} Perspective</h4>
-                        <p className="max-w-md text-[#8a8676] leading-relaxed mb-8">
-                          The artistic visualization for <span className="font-bold">{selectedRender}</span> is currently being prepared for the high-resolution viewer.
-                        </p>
-                        <div className="flex gap-4">
-                          <div className="px-5 py-2 bg-[#f6f2ea] rounded-full text-[10px] font-bold text-[#8a8676] uppercase tracking-widest border border-[#e3dcce]">
-                            Pending Assets
+                      )}
+                    </div>
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center gap-6">
+                      <div className="relative group cursor-zoom-in">
+                        <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors rounded"></div>
+                        {/* Placeholder until user uploads actual renders */}
+                        <div className="w-[800px] h-[500px] bg-white shadow-2xl rounded flex flex-col items-center justify-center border-2 border-dashed border-[#cdc3b1] p-12 text-center">
+                          <div className="w-20 h-20 bg-[#e9efe5] rounded-full flex items-center justify-center mb-6 text-[#4a6b43]">
+                            <Maximize size={40} />
                           </div>
-                          <div className="px-5 py-2 bg-[#6b8e64] rounded-full text-[10px] font-bold text-white uppercase tracking-widest shadow-lg">
-                            Ready for Upload
+                          <h4 className="text-2xl font-cardo text-[#4a6b43] mb-4">{selectedRender} Perspective</h4>
+                          <p className="max-w-md text-[#8a8676] leading-relaxed mb-8">
+                            The artistic visualization for <span className="font-bold">{selectedRender}</span> is currently being prepared for the high-resolution viewer.
+                          </p>
+                          <div className="flex gap-4">
+                            <div className="px-5 py-2 bg-[#f6f2ea] rounded-full text-[10px] font-bold text-[#8a8676] uppercase tracking-widest border border-[#e3dcce]">
+                              Pending Assets
+                            </div>
+                            <div className="px-5 py-2 bg-[#6b8e64] rounded-full text-[10px] font-bold text-white uppercase tracking-widest shadow-lg">
+                              Ready for Upload
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 <div className="flex-none p-4 bg-white border-t border-[#e3dcce] flex justify-between text-[10px] text-[#8a8676] font-medium tracking-widest uppercase">
