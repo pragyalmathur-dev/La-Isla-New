@@ -550,7 +550,11 @@ export default function App() {
             icon={beachIcon}
           >
             <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              Xandrem Beach
+              <div className="text-center">
+                <div>Xandrem Beach</div>
+                <div>10 Min Drive</div>
+                <div>3.8 Km Away</div>
+              </div>
             </Tooltip>
           </Marker>
 
@@ -559,7 +563,11 @@ export default function App() {
             icon={beachIcon}
           >
             <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              Tolivia Beach
+              <div className="text-center">
+                <div>Tolivia Beach</div>
+                <div>9 Min Drive</div>
+                <div>3.7 Km Away</div>
+              </div>
             </Tooltip>
           </Marker>
 
@@ -612,7 +620,11 @@ export default function App() {
             icon={beachIcon}
           >
             <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              Nirakar High School
+              <div className="text-center">
+                <div>Nirakar High School</div>
+                <div>3 Min Drive</div>
+                <div>1.8 Km Away</div>
+              </div>
             </Tooltip>
           </Marker>
           
@@ -621,7 +633,11 @@ export default function App() {
             icon={beachIcon}
           >
             <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              Church of St Anthony of Lisbon
+              <div className="text-center">
+                <div>Church of St Anthony of Lisbon</div>
+                <div>5 Min Drive</div>
+                <div>2.6 Km Away</div>
+              </div>
             </Tooltip>
           </Marker>
 
@@ -630,7 +646,11 @@ export default function App() {
             icon={beachIcon}
           >
             <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              Havana Bar & Restaurant
+              <div className="text-center">
+                <div>Havana Bar & Restaurant</div>
+                <div>4 Mins Drive</div>
+                <div>2 Km Away</div>
+              </div>
             </Tooltip>
           </Marker>
 
@@ -639,7 +659,11 @@ export default function App() {
             icon={beachIcon}
           >
             <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              Casa Jaali (Cafe)
+              <div className="text-center">
+                <div>Casa Jaali (Cafe)</div>
+                <div>13 Min Drive</div>
+                <div>8.5 Km Away</div>
+              </div>
             </Tooltip>
           </Marker>
 
@@ -666,7 +690,11 @@ export default function App() {
             icon={beachIcon}
           >
             <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              Zest (Cafe & Bar)
+              <div className="text-center">
+                <div>Zest (Cafe & Bar)</div>
+                <div>11 Min Drive</div>
+                <div>7.8 Km Away</div>
+              </div>
             </Tooltip>
           </Marker>
 
