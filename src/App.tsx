@@ -330,14 +330,16 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="flex-1 overflow-auto bg-[#f1ece1] p-4 lg:p-8 flex items-center justify-center min-h-0 sm:min-h-[400px]">
+              <div className="flex-1 min-h-0 bg-[#f1ece1] p-4 lg:p-8 flex items-center justify-center">
                 {villaPlanUrl ? (
-                  <img 
-                    src={villaPlanUrl} 
-                    alt={`Villa ${selectedVilla.n} ${floor} ${mode}`} 
-                    className="max-w-full max-h-full object-contain bg-white shadow-xl rounded lg:p-4 cursor-zoom-in"
-                    onClick={() => window.open(villaPlanUrl, '_blank')}
-                  />
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    <img 
+                      src={villaPlanUrl} 
+                      alt={`Villa ${selectedVilla.n} ${floor} ${mode}`} 
+                      className="max-w-full max-h-full w-auto h-auto object-contain bg-white shadow-xl rounded lg:p-4 cursor-zoom-in"
+                      onClick={() => window.open(villaPlanUrl, '_blank')}
+                    />
+                  </div>
                 ) : (
                   <div className="text-center py-20">
                     <Info className="mx-auto text-[#cdc3b1] mb-2" size={48} />
