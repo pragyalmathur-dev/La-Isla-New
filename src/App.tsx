@@ -50,8 +50,9 @@ const TALPONA_BEACH_LOC = { lat: 14.976814, lng: 74.042358 };
 const NIRAKAR_GROUND_LOC = { lat: 14.948755, lng: 74.056363 };
 const SCHOOL_LOC = { lat: 14.948146, lng: 74.056558 };
 const NIRAKAR_HIGH_SCHOOL_LOC = { lat: 14.960280, lng: 74.055549 };
+const CHURCH_LOC = { lat: 14.964358, lng: 74.048235 };
 const HAVANA_LOC = { lat: 14.962635, lng: 74.052656 };
-const SUPERMARKET_LOC = { lat: 14.959160, lng: 74.053358 };
+const CASA_JAALI_LOC = { lat: 14.999068, lng: 74.028544 };
 const LALIT_LOC = { lat: 14.991451, lng: 74.042100 };
 const NH66_LABEL_LOC = { lat: 14.951625, lng: 74.054830 };
 const NH66_LABEL_LOC_2 = { lat: 14.993460, lng: 74.043818 };
@@ -535,6 +536,15 @@ export default function App() {
               Nirakar High School
             </Tooltip>
           </Marker>
+          
+          <Marker 
+            position={[CHURCH_LOC.lat, CHURCH_LOC.lng]} 
+            icon={beachIcon}
+          >
+            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+              Church of St Anthony of Lisbon
+            </Tooltip>
+          </Marker>
 
           <Marker 
             position={[HAVANA_LOC.lat, HAVANA_LOC.lng]} 
@@ -546,11 +556,11 @@ export default function App() {
           </Marker>
 
           <Marker 
-            position={[SUPERMARKET_LOC.lat, SUPERMARKET_LOC.lng]} 
+            position={[CASA_JAALI_LOC.lat, CASA_JAALI_LOC.lng]} 
             icon={beachIcon}
           >
             <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              Supermarket
+              Casa Jaali (Cafe)
             </Tooltip>
           </Marker>
 
