@@ -1,1 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Mulish:ital,wght@0,200;0,300;0,400;1,300&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-cardo: "Cardo", serif;
+  --font-mulish: "Mulish", sans-serif;
+}

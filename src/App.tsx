@@ -4,6 +4,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { motion, AnimatePresence } from 'motion/react';
 import { Map as MapIcon, Layers, Maximize, Navigation, Info, ChevronRight, X, Ruler, Plus, Minus, Move, Menu } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 
 // --- Types ---
 interface Villa {
@@ -36,8 +37,8 @@ const beachIcon = L.divIcon({
   className: 'bg-transparent',
   html: `
     <div class="relative flex flex-col items-center">
-      <div class="absolute w-8 h-8 bg-blue-500 rounded-full opacity-30 animate-ping -mt-1"></div>
-      <div class="relative w-7 h-7 bg-blue-600 rounded-full border-2 border-white shadow-lg flex items-center justify-center z-10">
+      <div class="absolute w-8 h-8 bg-[#094f39] rounded-full opacity-30 animate-ping -mt-1"></div>
+      <div class="relative w-7 h-7 bg-[#094f39] rounded-full border-2 border-white shadow-lg flex items-center justify-center z-10">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
       </div>
     </div>
@@ -203,10 +204,10 @@ export default function App() {
   }, [selectedVilla, floor, mode]);
 
   return (
-    <div className="flex h-screen w-full bg-[#f6f2ea] text-[#2f3a30] font-sans selection:bg-[#6b8e64]/30 overflow-hidden relative">
+    <div className="flex h-screen w-full bg-[#f6f2ea] text-[#2f3a30] font-mulish font-light selection:bg-[#6b8e64]/30 overflow-hidden relative">
       {/* Mobile Header */}
       <header className="lg:hidden absolute top-0 left-0 right-0 h-16 bg-white border-b border-[#e3dcce] z-40 flex items-center justify-between px-4">
-        <h1 className="text-sm font-serif tracking-[0.2em] text-[#4a6b43] uppercase font-bold">
+        <h1 className="text-sm font-cardo tracking-[0.2em] text-[#4a6b43] uppercase font-bold">
           LA ISLA <span className="text-[#b48a4f]">·</span> SITE MAP
         </h1>
         <button 
@@ -243,10 +244,10 @@ export default function App() {
           >
             <X size={20} />
           </button>
-          <h1 className="text-xl font-serif tracking-widest text-[#4a6b43] items-center uppercase font-bold hidden lg:flex">
+          <h1 className="text-xl font-cardo tracking-widest text-[#4a6b43] items-center uppercase font-bold hidden lg:flex">
             LA ISLA <span className="mx-2 text-[#b48a4f] font-light">·</span> SITE MAP
           </h1>
-          <h1 className="text-lg font-serif tracking-widest text-[#4a6b43] flex lg:hidden items-center uppercase font-bold">
+          <h1 className="text-lg font-cardo tracking-widest text-[#4a6b43] flex lg:hidden items-center uppercase font-bold">
             LA ISLA
           </h1>
           <p className="text-[10px] text-[#8a8676] mt-1 tracking-wider uppercase font-medium">
@@ -352,7 +353,7 @@ export default function App() {
 
           <Polyline 
             positions={NH66_PATH} 
-            pathOptions={{ color: '#3b82f6', weight: 6, opacity: 0.8 }}
+            pathOptions={{ color: '#f4f6fc', weight: 6, opacity: 0.8 }}
           />
 
           <Marker 
@@ -384,7 +385,7 @@ export default function App() {
 
           <Polyline 
             positions={ENTRY_ROAD_PATH} 
-            pathOptions={{ color: '#3b82f6', weight: 4, opacity: 0.7, dashArray: '10, 10' }}
+            pathOptions={{ color: '#f4f6fc', weight: 4, opacity: 0.7, dashArray: '10, 10' }}
           />
 
           <Marker 
@@ -481,7 +482,7 @@ export default function App() {
               onClick={e => e.stopPropagation()}
             >
               <div className="flex-none flex items-center justify-between p-4 lg:p-6 border-b border-[#e3dcce] bg-linear-to-b from-[#fbf8f1] to-white">
-                <h3 className="text-xl lg:text-2xl font-serif text-[#4a6b43]">Villa {selectedVilla.n.toString().padStart(2, '0')}</h3>
+                <h3 className="text-xl lg:text-2xl font-cardo text-[#4a6b43]">Villa {selectedVilla.n.toString().padStart(2, '0')}</h3>
                 <button 
                   onClick={() => setSelectedVilla(null)}
                   className="p-2 hover:bg-[#e9efe5] rounded-full transition-colors text-[#8a8676]"
@@ -557,14 +558,15 @@ export default function App() {
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #e3dcce; border-radius: 2px; }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #6b8e64; }
         
-        .leaflet-container { font-family: inherit !important; }
+        .leaflet-container { font-family: "Mulish", sans-serif !important; font-weight: 300; }
         .siteplan-img { transition: opacity 0.3s ease; filter: contrast(1.1) brightness(1.05); pointer-events: none; }
         
         .custom-tooltip {
           background-color: white !important;
-          border: 1px solid #3b82f6 !important;
-          color: #1d4ed8 !important;
-          font-weight: 700 !important;
+          border: 1px solid #094f39 !important;
+          color: #094f39 !important;
+          font-family: "Mulish", sans-serif !important;
+          font-weight: 800 !important;
           text-transform: uppercase !important;
           letter-spacing: 0.05em !important;
           font-size: 10px !important;
@@ -572,8 +574,9 @@ export default function App() {
           border-radius: 4px !important;
           box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1) !important;
         }
-        .custom-tooltip::before { border-top-color: #3b82f6 !important; }
+        .custom-tooltip::before { border-top-color: #094f39 !important; }
       `}} />
+      <Analytics />
     </div>
   );
 }
