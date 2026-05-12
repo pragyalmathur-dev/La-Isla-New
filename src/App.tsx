@@ -285,7 +285,7 @@ export default function App() {
               initial={{ scale: 0.95, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.95, y: 20 }}
-              className="bg-white rounded-xl shadow-2xl w-full max-w-6xl h-full lg:h-auto max-h-[95vh] lg:max-h-[90vh] overflow-hidden flex flex-col"
+              className="bg-white rounded-xl shadow-2xl w-full max-w-6xl h-full lg:h-[85vh] max-h-[95vh] lg:max-h-[85vh] overflow-hidden flex flex-col"
               onClick={e => e.stopPropagation()}
             >
               <div className="flex-none flex items-center justify-between p-4 lg:p-6 border-b border-[#e3dcce] bg-linear-to-b from-[#fbf8f1] to-white">
@@ -332,13 +332,13 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="flex-1 min-h-0 bg-[#f1ece1] relative overflow-hidden flex items-center justify-center p-4 lg:p-8">
+              <div className="flex-1 min-h-0 bg-[#f1ece1] relative overflow-hidden flex items-center justify-center p-6 lg:p-12">
                 {villaPlanUrl ? (
-                  <div className="w-full h-full flex items-center justify-center max-w-full max-h-full">
+                  <div className="w-full h-full flex items-center justify-center">
                     <img 
                       src={villaPlanUrl} 
                       alt={`Villa ${selectedVilla.n} ${floor} ${mode}`} 
-                      className="max-w-full max-h-full object-contain bg-white shadow-2xl rounded lg:p-4 cursor-zoom-in"
+                      className="max-w-full max-h-full object-contain bg-white shadow-2xl rounded lg:p-6 cursor-zoom-in"
                       onClick={() => window.open(villaPlanUrl, '_blank')}
                     />
                   </div>
