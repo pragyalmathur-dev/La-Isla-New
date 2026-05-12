@@ -53,10 +53,14 @@ const NIRAKAR_HIGH_SCHOOL_LOC = { lat: 14.960280, lng: 74.055549 };
 const CHURCH_LOC = { lat: 14.964358, lng: 74.048235 };
 const HAVANA_LOC = { lat: 14.962635, lng: 74.052656 };
 const CASA_JAALI_LOC = { lat: 14.999068, lng: 74.028544 };
+const COTIGAO_LOC = { lat: 14.965751, lng: 74.195798 };
+const MUDAGERI_FALLS_LOC = { lat: 14.904467, lng: 74.132291 };
+const ZEST_LOC = { lat: 14.998365, lng: 74.033299 };
 const LALIT_LOC = { lat: 14.991451, lng: 74.042100 };
 const NH66_LABEL_LOC = { lat: 14.951625, lng: 74.054830 };
 const NH66_LABEL_LOC_2 = { lat: 14.993460, lng: 74.043818 };
 const NH66_LABEL_LOC_3 = { lat: 14.973003, lng: 74.046446 };
+const NH66_LABEL_LOC_4 = { lat: 14.922651, lng: 74.075744 };
 
 const BORDER_PATH: L.LatLngExpression[] = [
   [14.900215, 74.085037],
@@ -467,6 +471,15 @@ export default function App() {
             </Tooltip>
           </Marker>
 
+          <Marker 
+            position={[NH66_LABEL_LOC_4.lat, NH66_LABEL_LOC_4.lng]}
+            icon={L.divIcon({ className: 'bg-transparent', iconSize: [1, 1] })}
+          >
+            <Tooltip permanent={true} direction="top" className="custom-tooltip">
+              NH66
+            </Tooltip>
+          </Marker>
+
           <Polyline 
             positions={ENTRY_ROAD_PATH} 
             pathOptions={{ color: '#f4f6fc', weight: 4, opacity: 0.7, dashArray: '10, 10' }}
@@ -577,6 +590,33 @@ export default function App() {
           >
             <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
               Casa Jaali (Cafe)
+            </Tooltip>
+          </Marker>
+
+          <Marker 
+            position={[COTIGAO_LOC.lat, COTIGAO_LOC.lng]} 
+            icon={beachIcon}
+          >
+            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+              Cotigao Wildlife Sanctuary
+            </Tooltip>
+          </Marker>
+
+          <Marker 
+            position={[MUDAGERI_FALLS_LOC.lat, MUDAGERI_FALLS_LOC.lng]} 
+            icon={beachIcon}
+          >
+            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+              Mudageri Falls
+            </Tooltip>
+          </Marker>
+
+          <Marker 
+            position={[ZEST_LOC.lat, ZEST_LOC.lng]} 
+            icon={beachIcon}
+          >
+            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+              Zest (Cafe & Bar)
             </Tooltip>
           </Marker>
 
