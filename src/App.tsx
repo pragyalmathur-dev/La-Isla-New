@@ -49,12 +49,29 @@ const TOLIVIA_BEACH_LOC = { lat: 14.934657, lng: 74.047156 };
 const TALPONA_BEACH_LOC = { lat: 14.976814, lng: 74.042358 };
 const NIRAKAR_GROUND_LOC = { lat: 14.948755, lng: 74.056363 };
 const SCHOOL_LOC = { lat: 14.948146, lng: 74.056558 };
+const NIRAKAR_HIGH_SCHOOL_LOC = { lat: 14.960280, lng: 74.055549 };
 const HAVANA_LOC = { lat: 14.962635, lng: 74.052656 };
 const SUPERMARKET_LOC = { lat: 14.959160, lng: 74.053358 };
 const LALIT_LOC = { lat: 14.991451, lng: 74.042100 };
 const NH66_LABEL_LOC = { lat: 14.951625, lng: 74.054830 };
 const NH66_LABEL_LOC_2 = { lat: 14.993460, lng: 74.043818 };
 const NH66_LABEL_LOC_3 = { lat: 14.973003, lng: 74.046446 };
+
+const BORDER_PATH: L.LatLngExpression[] = [
+  [14.900215, 74.085037],
+  [14.902114, 74.087173],
+  [14.902897, 74.087784],
+  [14.903445, 74.088193],
+  [14.903439, 74.090275],
+  [14.910986, 74.094491],
+  [14.915798, 74.101614],
+  [14.912912, 74.104792],
+  [14.914191, 74.107340],
+  [14.913965, 74.108513]
+];
+
+const GOA_LABEL_LOC = { lat: 14.9125, lng: 74.0940 };
+const KARNATAKA_LABEL_LOC = { lat: 14.9095, lng: 74.0955 };
 
 // Custom Blue Pin Icon
 const beachIcon = L.divIcon({
@@ -511,6 +528,15 @@ export default function App() {
           </Marker>
 
           <Marker 
+            position={[NIRAKAR_HIGH_SCHOOL_LOC.lat, NIRAKAR_HIGH_SCHOOL_LOC.lng]} 
+            icon={beachIcon}
+          >
+            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+              Nirakar High School
+            </Tooltip>
+          </Marker>
+
+          <Marker 
             position={[HAVANA_LOC.lat, HAVANA_LOC.lng]} 
             icon={beachIcon}
           >
@@ -535,6 +561,33 @@ export default function App() {
           >
             <Tooltip permanent={false}>Site Entry Gate</Tooltip>
           </CircleMarker>
+
+          {/* Border between Goa and Karnataka */}
+          <Polyline 
+            positions={BORDER_PATH} 
+            pathOptions={{ color: '#ffffff', weight: 6, opacity: 0.8, dashArray: '10, 15' }}
+          />
+
+          <Marker 
+            position={[GOA_LABEL_LOC.lat, GOA_LABEL_LOC.lng]}
+            icon={L.divIcon({ 
+              className: 'bg-transparent', 
+              html: '<div class="text-white font-cardo text-[10px] font-bold tracking-[0.4em] opacity-70 select-none pointer-events-none">GOA</div>',
+              iconSize: [100, 20],
+              iconAnchor: [50, 10]
+            })}
+          />
+
+          <Marker 
+            position={[KARNATAKA_LABEL_LOC.lat, KARNATAKA_LABEL_LOC.lng]}
+            icon={L.divIcon({ 
+              className: 'bg-transparent', 
+              html: '<div class="text-white font-cardo text-[10px] font-bold tracking-[0.4em] opacity-70 select-none pointer-events-none">KARNATAKA</div>',
+              iconSize: [200, 20],
+              iconAnchor: [100, 10]
+            })}
+          />
+
         </MapContainer>
 
         {/* Map Interaction Hint */}
