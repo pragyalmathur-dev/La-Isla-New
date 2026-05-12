@@ -22,22 +22,22 @@ const ASSET_SITEPLAN = `${REPO_BASE}assets/siteplan.webp`;
 const ASSET_VILLAS_JSON = `${REPO_BASE}villas.json`;
 
 const PROJECT_RENDERS: Record<string, string | string[]> = {
-  'Aerial View': '/assets/aerial_view.jpg',
+  'Aerial View': `${REPO_BASE}assets/aerial_view.jpg`,
   '2 BHK': [
-    '/assets/2bhk_balcony.jpg',
-    '/assets/2bhk_exterior.jpg',
-    '/assets/2bhk_facade.jpg'
+    `${REPO_BASE}assets/2bhk_balcony.jpg`,
+    `${REPO_BASE}assets/2bhk_exterior.jpg`,
+    `${REPO_BASE}assets/2bhk_facade.jpg`
   ],
   '3 BHK': [
-    '/assets/3bhk_ext_1.jpg',
-    '/assets/3bhk_terrace.jpg',
-    '/assets/3bhk_ext_2.jpg'
+    `${REPO_BASE}assets/3bhk_ext_1.jpg`,
+    `${REPO_BASE}assets/3bhk_terrace.jpg`,
+    `${REPO_BASE}assets/3bhk_ext_2.jpg`
   ],
   '4 BHK': [
-    '/assets/4bhk_exterior.jpg',
-    '/assets/4bhk_facade.jpg',
-    '/assets/4bhk_balcony.jpg',
-    '/assets/4bhk_terrace.jpg'
+    `${REPO_BASE}assets/4bhk_exterior.jpg`,
+    `${REPO_BASE}assets/4bhk_facade.jpg`,
+    `${REPO_BASE}assets/4bhk_balcony.jpg`,
+    `${REPO_BASE}assets/4bhk_terrace.jpg`
   ]
 };
 
@@ -537,7 +537,11 @@ export default function App() {
             icon={beachIcon}
           >
             <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              Galgibaga Beach
+              <div className="text-center">
+                <div>Galgibaga Beach</div>
+                <div>5 Mins Drive</div>
+                <div>3 Km Away</div>
+              </div>
             </Tooltip>
           </Marker>
 
@@ -564,7 +568,11 @@ export default function App() {
             icon={beachIcon}
           >
             <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              Talpona Beach
+              <div className="text-center">
+                <div>Talpona Beach</div>
+                <div>7 Mins Drive</div>
+                <div>4 Km Away</div>
+              </div>
             </Tooltip>
           </Marker>
 
@@ -573,7 +581,11 @@ export default function App() {
             icon={beachIcon}
           >
             <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              The Lalit Golf & Spa Resort
+              <div className="text-center">
+                <div>The Lalit Golf & Spa Resort</div>
+                <div>11 Mins Drive</div>
+                <div>7 Km Away</div>
+              </div>
             </Tooltip>
           </Marker>
 
