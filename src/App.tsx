@@ -22,6 +22,19 @@ const ASSET_VILLAS_JSON = `${REPO_BASE}villas.json`;
 // Final Anchor from user calibration
 const ANCHOR = { lat: 14.95017, lng: 74.05339 };
 
+// Road Coordinates (Finetuned based on visual alignment in screenshots)
+const ENTRY_ROAD_PATH: L.LatLngExpression[] = [
+  [14.950220, 74.053487],
+  [14.950326, 74.053734],
+  [14.950404, 74.053942],
+  [14.950486, 74.054136],
+  [14.950596, 74.054340],
+  [14.950712, 74.054538],
+  [14.950819, 74.054747],
+  [14.950895, 74.054915],
+  [14.951028, 74.055109]
+];
+
 // Entry's pixel position in normalized fractions (from original source)
 const ENTRY_FRAC = { x: 1660 / 2347, y: 540 / 4044 };
 const PLAN_ASPECT = 2347 / 4044;
@@ -254,6 +267,13 @@ export default function App() {
             zIndex={100}
           />
 
+          <Polyline 
+            positions={ENTRY_ROAD_PATH} 
+            pathOptions={{ color: '#3b82f6', weight: 4, opacity: 0.7, dashArray: '10, 10' }}
+          >
+            <Tooltip permanent={true}>Access Road</Tooltip>
+          </Polyline>
+
           <CircleMarker 
             center={[config.anchorLat, config.anchorLng]} 
             radius={8} 
@@ -261,13 +281,6 @@ export default function App() {
           >
             <Tooltip permanent={false}>Site Entry Gate</Tooltip>
           </CircleMarker>
-
-          {/* Compass */}
-          <div className="absolute top-6 right-6 w-16 h-16 bg-white/90 backdrop-blur rounded-full border border-[#cdc3b1] shadow-xl z-[1000] flex flex-col items-center justify-center">
-            <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[10px] border-b-[#6b8e64] -mt-1 mb-1" />
-            <span className="font-serif font-bold text-sm text-[#4a6b43]">N</span>
-            <div className="w-0.5 h-2 bg-[#cdc3b1] mt-1" />
-          </div>
         </MapContainer>
       </main>
 
