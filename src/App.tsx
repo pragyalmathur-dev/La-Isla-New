@@ -22,7 +22,44 @@ const ASSET_VILLAS_JSON = `${REPO_BASE}villas.json`;
 // Final Anchor from user calibration
 const ANCHOR = { lat: 14.95017, lng: 74.05339 };
 
+const BEACH_LOC = { lat: 14.961497, lng: 74.048541 };
+const LALIT_LOC = { lat: 14.991451, lng: 74.042100 };
+const NH66_LABEL_LOC = { lat: 14.951625, lng: 74.054830 };
+const NH66_LABEL_LOC_2 = { lat: 14.993460, lng: 74.043818 };
+const NH66_LABEL_LOC_3 = { lat: 14.973003, lng: 74.046446 };
+
+// Custom Blue Pin Icon
+const beachIcon = L.divIcon({
+  className: 'bg-transparent',
+  html: `
+    <div class="relative flex flex-col items-center">
+      <div class="absolute w-8 h-8 bg-blue-500 rounded-full opacity-30 animate-ping -mt-1"></div>
+      <div class="relative w-7 h-7 bg-blue-600 rounded-full border-2 border-white shadow-lg flex items-center justify-center z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+    </div>
+  `,
+  iconSize: [28, 28],
+  iconAnchor: [14, 28],
+});
+
 const NH66_PATH: L.LatLngExpression[] = [
+  [14.999300, 74.040818],
+  [14.997130, 74.041197],
+  [14.995434, 74.041387],
+  [14.994248, 74.042436],
+  [14.993460, 74.043818],
+  [14.991909, 74.047785],
+  [14.991181, 74.048590],
+  [14.990344, 74.049161],
+  [14.988018, 74.049324],
+  [14.984476, 74.049432],
+  [14.983475, 74.049084],
+  [14.982716, 74.048272],
+  [14.981217, 74.046049],
+  [14.980799, 74.045478],
+  [14.980041, 74.044753],
+  [14.979198, 74.044278],
   [14.979055, 74.044277],
   [14.978316, 74.044323],
   [14.976034, 74.045275],
@@ -313,16 +350,66 @@ export default function App() {
           <Polyline 
             positions={NH66_PATH} 
             pathOptions={{ color: '#3b82f6', weight: 6, opacity: 0.8 }}
+          />
+
+          <Marker 
+            position={[NH66_LABEL_LOC.lat, NH66_LABEL_LOC.lng]}
+            icon={L.divIcon({ className: 'bg-transparent', iconSize: [1, 1] })}
           >
-            <Tooltip permanent={true}>NH66</Tooltip>
-          </Polyline>
+            <Tooltip permanent={true} direction="top" className="custom-tooltip">
+              NH66
+            </Tooltip>
+          </Marker>
+
+          <Marker 
+            position={[NH66_LABEL_LOC_2.lat, NH66_LABEL_LOC_2.lng]}
+            icon={L.divIcon({ className: 'bg-transparent', iconSize: [1, 1] })}
+          >
+            <Tooltip permanent={true} direction="top" className="custom-tooltip">
+              NH66
+            </Tooltip>
+          </Marker>
+
+          <Marker 
+            position={[NH66_LABEL_LOC_3.lat, NH66_LABEL_LOC_3.lng]}
+            icon={L.divIcon({ className: 'bg-transparent', iconSize: [1, 1] })}
+          >
+            <Tooltip permanent={true} direction="top" className="custom-tooltip">
+              NH66
+            </Tooltip>
+          </Marker>
 
           <Polyline 
             positions={ENTRY_ROAD_PATH} 
             pathOptions={{ color: '#3b82f6', weight: 4, opacity: 0.7, dashArray: '10, 10' }}
+          />
+
+          <Marker 
+            position={[14.9506, 74.0544]}
+            icon={L.divIcon({ className: 'bg-transparent', iconSize: [1, 1] })}
           >
-            <Tooltip permanent={true}>Access Road</Tooltip>
-          </Polyline>
+            <Tooltip permanent={true} direction="top" className="custom-tooltip">
+              Access Road
+            </Tooltip>
+          </Marker>
+
+          <Marker 
+            position={[BEACH_LOC.lat, BEACH_LOC.lng]} 
+            icon={beachIcon}
+          >
+            <Tooltip permanent={true} direction="top" offset={[0, -32]} className="custom-tooltip">
+              Galgibaga Beach
+            </Tooltip>
+          </Marker>
+
+          <Marker 
+            position={[LALIT_LOC.lat, LALIT_LOC.lng]} 
+            icon={beachIcon}
+          >
+            <Tooltip permanent={true} direction="top" offset={[0, -32]} className="custom-tooltip">
+              The Lalit Golf & Spa Resort
+            </Tooltip>
+          </Marker>
 
           <CircleMarker 
             center={[config.anchorLat, config.anchorLng]} 
@@ -430,6 +517,20 @@ export default function App() {
         
         .leaflet-container { font-family: inherit !important; }
         .siteplan-img { transition: opacity 0.3s ease; filter: contrast(1.1) brightness(1.05); pointer-events: none; }
+        
+        .custom-tooltip {
+          background-color: white !important;
+          border: 1px solid #3b82f6 !important;
+          color: #1d4ed8 !important;
+          font-weight: 700 !important;
+          text-transform: uppercase !important;
+          letter-spacing: 0.05em !important;
+          font-size: 10px !important;
+          padding: 4px 8px !important;
+          border-radius: 4px !important;
+          box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1) !important;
+        }
+        .custom-tooltip::before { border-top-color: #3b82f6 !important; }
       `}} />
     </div>
   );
