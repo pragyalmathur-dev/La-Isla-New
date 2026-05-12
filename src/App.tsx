@@ -288,7 +288,7 @@ export default function App() {
               className="bg-white rounded-xl shadow-2xl w-full max-w-6xl h-full lg:h-auto max-h-[95vh] lg:max-h-[90vh] overflow-hidden flex flex-col"
               onClick={e => e.stopPropagation()}
             >
-              <div className="flex items-center justify-between p-4 lg:p-6 border-b border-[#e3dcce] bg-linear-to-b from-[#fbf8f1] to-white">
+              <div className="flex-none flex items-center justify-between p-4 lg:p-6 border-b border-[#e3dcce] bg-linear-to-b from-[#fbf8f1] to-white">
                 <h3 className="text-xl lg:text-2xl font-serif text-[#4a6b43]">Villa {selectedVilla.n.toString().padStart(2, '0')}</h3>
                 <button 
                   onClick={() => setSelectedVilla(null)}
@@ -298,45 +298,47 @@ export default function App() {
                 </button>
               </div>
 
-              <div className="bg-[#f1ece1] p-2 lg:p-4 flex flex-col sm:flex-row items-center justify-between gap-2 lg:gap-4 border-b border-[#e3dcce]">
-                <div className="flex w-full sm:w-auto gap-1 bg-white p-1 rounded-lg shadow-sm">
-                  <button 
-                    onClick={() => setFloor('gf')}
-                    className={`flex-1 sm:flex-none px-3 lg:px-4 py-2 text-[10px] lg:text-xs font-bold rounded-md transition-all ${floor === 'gf' ? 'bg-[#6b8e64] text-white' : 'text-[#4a5249] hover:bg-[#e9efe5]'}`}
-                  >
-                    Ground
-                  </button>
-                  <button 
-                    onClick={() => setFloor('ff')}
-                    className={`flex-1 sm:flex-none px-3 lg:px-4 py-2 text-[10px] lg:text-xs font-bold rounded-md transition-all ${floor === 'ff' ? 'bg-[#6b8e64] text-white' : 'text-[#4a5249] hover:bg-[#e9efe5]'}`}
-                  >
-                    1st Floor
-                  </button>
-                </div>
+              <div className="flex-none bg-[#f1ece1] p-2 lg:p-4 border-b border-[#e3dcce]">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-3 lg:gap-4">
+                  <div className="flex w-full sm:w-auto gap-1 bg-white p-1 rounded-lg shadow-sm">
+                    <button 
+                      onClick={() => setFloor('gf')}
+                      className={`flex-1 sm:flex-none px-4 lg:px-6 py-2 text-[10px] lg:text-xs font-bold rounded-md transition-all ${floor === 'gf' ? 'bg-[#6b8e64] text-white' : 'text-[#4a5249] hover:bg-[#e9efe5]'}`}
+                    >
+                      Ground Floor
+                    </button>
+                    <button 
+                      onClick={() => setFloor('ff')}
+                      className={`flex-1 sm:flex-none px-4 lg:px-6 py-2 text-[10px] lg:text-xs font-bold rounded-md transition-all ${floor === 'ff' ? 'bg-[#6b8e64] text-white' : 'text-[#4a5249] hover:bg-[#e9efe5]'}`}
+                    >
+                      First Floor
+                    </button>
+                  </div>
 
-                <div className="flex w-full sm:w-auto gap-1 bg-white p-1 rounded-lg shadow-sm">
-                  <button 
-                    onClick={() => setMode('wd')}
-                    className={`flex-1 sm:flex-none px-3 lg:px-4 py-2 text-[10px] lg:text-xs font-bold rounded-md transition-all ${mode === 'wd' ? 'bg-[#b48a4f] text-white' : 'text-[#4a5249] hover:bg-[#e9efe5]'}`}
-                  >
-                    With Dimensions
-                  </button>
-                  <button 
-                    onClick={() => setMode('wod')}
-                    className={`flex-1 sm:flex-none px-3 lg:px-4 py-2 text-[10px] lg:text-xs font-bold rounded-md transition-all ${mode === 'wod' ? 'bg-[#b48a4f] text-white' : 'text-[#4a5249] hover:bg-[#e9efe5]'}`}
-                  >
-                    Without Dimensions
-                  </button>
+                  <div className="flex w-full sm:w-auto gap-1 bg-white p-1 rounded-lg shadow-sm">
+                    <button 
+                      onClick={() => setMode('wd')}
+                      className={`flex-1 sm:flex-none px-4 lg:px-6 py-2 text-[10px] lg:text-xs font-bold rounded-md transition-all ${mode === 'wd' ? 'bg-[#b48a4f] text-white' : 'text-[#4a5249] hover:bg-[#e9efe5]'}`}
+                    >
+                      With Dimensions
+                    </button>
+                    <button 
+                      onClick={() => setMode('wod')}
+                      className={`flex-1 sm:flex-none px-4 lg:px-6 py-2 text-[10px] lg:text-xs font-bold rounded-md transition-all ${mode === 'wod' ? 'bg-[#b48a4f] text-white' : 'text-[#4a5249] hover:bg-[#e9efe5]'}`}
+                    >
+                      Without Dimensions
+                    </button>
+                  </div>
                 </div>
               </div>
 
-              <div className="flex-1 min-h-0 bg-[#f1ece1] p-4 lg:p-8 flex items-center justify-center">
+              <div className="flex-1 min-h-0 bg-[#f1ece1] relative overflow-hidden flex items-center justify-center p-4 lg:p-8">
                 {villaPlanUrl ? (
-                  <div className="relative w-full h-full flex items-center justify-center">
+                  <div className="w-full h-full flex items-center justify-center max-w-full max-h-full">
                     <img 
                       src={villaPlanUrl} 
                       alt={`Villa ${selectedVilla.n} ${floor} ${mode}`} 
-                      className="max-w-full max-h-full w-auto h-auto object-contain bg-white shadow-xl rounded lg:p-4 cursor-zoom-in"
+                      className="max-w-full max-h-full object-contain bg-white shadow-2xl rounded lg:p-4 cursor-zoom-in"
                       onClick={() => window.open(villaPlanUrl, '_blank')}
                     />
                   </div>
@@ -348,7 +350,7 @@ export default function App() {
                 )}
               </div>
 
-              <div className="p-4 bg-white border-t border-[#e3dcce] flex justify-between text-[10px] text-[#8a8676] font-medium tracking-widest uppercase">
+              <div className="flex-none p-4 bg-white border-t border-[#e3dcce] flex justify-between text-[10px] text-[#8a8676] font-medium tracking-widest uppercase">
                 <span>La Isla / Architectural Planning</span>
                 <span>Click image to view in high resolution</span>
               </div>
