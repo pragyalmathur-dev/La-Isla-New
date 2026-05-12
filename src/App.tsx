@@ -5,6 +5,7 @@ import 'leaflet/dist/leaflet.css';
 import { motion, AnimatePresence } from 'motion/react';
 import { Map as MapIcon, Layers, Maximize, Navigation, Info, ChevronRight, X, Ruler, Plus, Minus, Move, Menu } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 // --- Types ---
 interface Villa {
@@ -949,6 +950,7 @@ export default function App() {
         .custom-tooltip::before { border-top-color: #094f39 !important; }
       `}} />
       <Analytics />
+      <SpeedInsights />
     </div>
   );
 }
