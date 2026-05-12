@@ -21,22 +21,22 @@ const ASSET_SITEPLAN = `${REPO_BASE}assets/siteplan.webp`;
 const ASSET_VILLAS_JSON = `${REPO_BASE}villas.json`;
 
 const PROJECT_RENDERS: Record<string, string | string[]> = {
-  'Aerial View': './aerial_view.jpg',
+  'Aerial View': '/assets/aerial_view.jpg',
   '2 BHK': [
-    './2bhk_balcony.jpg',
-    './2bhk_exterior.jpg',
-    './2bhk_facade.jpg'
+    '/assets/2bhk_balcony.jpg',
+    '/assets/2bhk_exterior.jpg',
+    '/assets/2bhk_facade.jpg'
   ],
   '3 BHK': [
-    './3bhk_ext_1.jpg',
-    './3bhk_terrace.jpg',
-    './3bhk_ext_2.jpg'
+    '/assets/3bhk_ext_1.jpg',
+    '/assets/3bhk_terrace.jpg',
+    '/assets/3bhk_ext_2.jpg'
   ],
   '4 BHK': [
-    './4bhk_exterior.jpg',
-    './4bhk_facade.jpg',
-    './4bhk_balcony.jpg',
-    './4bhk_terrace.jpg'
+    '/assets/4bhk_exterior.jpg',
+    '/assets/4bhk_facade.jpg',
+    '/assets/4bhk_balcony.jpg',
+    '/assets/4bhk_terrace.jpg'
   ]
 };
 
