@@ -602,7 +602,11 @@ export default function App() {
             icon={beachIcon}
           >
             <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              Nirakar Cricket Ground
+              <div className="text-center">
+                <div>Nirakar Cricket Ground</div>
+                <div>1 Min Drive</div>
+                <div>450 M Away</div>
+              </div>
             </Tooltip>
           </Marker>
 
@@ -611,7 +615,11 @@ export default function App() {
             icon={beachIcon}
           >
             <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              S S Angle Higher Secondary School
+              <div className="text-center">
+                <div>S S Angle Higher Secondary School</div>
+                <div>1 Min Drive</div>
+                <div>700 M Away</div>
+              </div>
             </Tooltip>
           </Marker>
 
