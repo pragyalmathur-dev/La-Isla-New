@@ -44,6 +44,8 @@ const PROJECT_RENDERS: Record<string, string | string[]> = {
 const ANCHOR = { lat: 14.95017, lng: 74.05339 };
 
 const BEACH_LOC = { lat: 14.961497, lng: 74.048541 };
+const XANDREM_BEACH_LOC = { lat: 14.939333, lng: 74.045792 };
+const TOLIVIA_BEACH_LOC = { lat: 14.934657, lng: 74.047156 };
 const TALPONA_BEACH_LOC = { lat: 14.976814, lng: 74.042358 };
 const NIRAKAR_GROUND_LOC = { lat: 14.948755, lng: 74.056363 };
 const SCHOOL_LOC = { lat: 14.948146, lng: 74.056558 };
@@ -451,6 +453,24 @@ export default function App() {
           >
             <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
               Galgibaga Beach
+            </Tooltip>
+          </Marker>
+
+          <Marker 
+            position={[XANDREM_BEACH_LOC.lat, XANDREM_BEACH_LOC.lng]} 
+            icon={beachIcon}
+          >
+            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+              Xandrem Beach
+            </Tooltip>
+          </Marker>
+
+          <Marker 
+            position={[TOLIVIA_BEACH_LOC.lat, TOLIVIA_BEACH_LOC.lng]} 
+            icon={beachIcon}
+          >
+            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+              Tolivia Beach
             </Tooltip>
           </Marker>
 
