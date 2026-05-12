@@ -23,6 +23,7 @@ const ASSET_VILLAS_JSON = `${REPO_BASE}villas.json`;
 const ANCHOR = { lat: 14.95017, lng: 74.05339 };
 
 const BEACH_LOC = { lat: 14.961497, lng: 74.048541 };
+const TALPONA_BEACH_LOC = { lat: 14.976814, lng: 74.042358 };
 const LALIT_LOC = { lat: 14.991451, lng: 74.042100 };
 const NH66_LABEL_LOC = { lat: 14.951625, lng: 74.054830 };
 const NH66_LABEL_LOC_2 = { lat: 14.993460, lng: 74.043818 };
@@ -399,6 +400,15 @@ export default function App() {
           >
             <Tooltip permanent={true} direction="top" offset={[0, -32]} className="custom-tooltip">
               Galgibaga Beach
+            </Tooltip>
+          </Marker>
+
+          <Marker 
+            position={[TALPONA_BEACH_LOC.lat, TALPONA_BEACH_LOC.lng]} 
+            icon={beachIcon}
+          >
+            <Tooltip permanent={true} direction="top" offset={[0, -32]} className="custom-tooltip">
+              Talpona Beach
             </Tooltip>
           </Marker>
 
