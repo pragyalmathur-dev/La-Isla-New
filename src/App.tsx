@@ -244,6 +244,7 @@ export default function App() {
   const [mode, setMode] = useState<'wd' | 'wod'>('wd');
   const [mapType, setMapType] = useState<'sat' | 'street' | 'hybrid'>('sat');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [map, setMap] = useState<L.Map | null>(null);
   
   // Final Fixed Calibration
   const config = {
@@ -339,6 +340,22 @@ export default function App() {
         </header>
 
         <div className="flex-1 overflow-y-auto custom-scrollbar">
+          {/* To Site Action */}
+          <section className="p-5 border-b border-[#e3dcce]">
+            <button 
+              onClick={() => {
+                if (map) {
+                  map.fitBounds(bounds, { padding: [50, 50], duration: 1.5 });
+                }
+                if (window.innerWidth < 1024) setIsSidebarOpen(false);
+              }}
+              className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-[#6b8e64] text-white rounded-lg shadow-lg hover:bg-[#4a6b43] transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+            >
+              <Maximize size={18} />
+              <span className="text-xs font-bold uppercase tracking-widest">To Site</span>
+            </button>
+          </section>
+
           {/* Map Controls */}
           <section className="p-5 border-b border-[#e3dcce]">
             <h2 className="text-[10px] font-bold text-[#8a8676] uppercase tracking-[0.2em] mb-4">View Controls</h2>
@@ -432,6 +449,7 @@ export default function App() {
       {/* Map Area */}
       <main className="flex-1 relative z-10 pt-16 lg:pt-0">
         <MapContainer 
+          ref={setMap}
           center={[ANCHOR.lat, ANCHOR.lng]} 
           zoom={18} 
           className="h-full w-full bg-[#f1ece1]"
