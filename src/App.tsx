@@ -22,22 +22,22 @@ const ASSET_SITEPLAN = `${REPO_BASE}assets/siteplan.webp`;
 const ASSET_VILLAS_JSON = `${REPO_BASE}villas.json`;
 
 const PROJECT_RENDERS: Record<string, string | string[]> = {
-  'Aerial View': '/assets/aerial_view.jpg',
+  'Aerial View': `${REPO_BASE}assets/aerial_view.jpg`,
   '2 BHK': [
-    '/assets/2bhk_balcony.jpg',
-    '/assets/2bhk_exterior.jpg',
-    '/assets/2bhk_facade.jpg'
+    `${REPO_BASE}assets/2bhk_balcony.jpg`,
+    `${REPO_BASE}assets/2bhk_exterior.jpg`,
+    `${REPO_BASE}assets/2bhk_facade.jpg`
   ],
   '3 BHK': [
-    '/assets/3bhk_ext_1.jpg',
-    '/assets/3bhk_terrace.jpg',
-    '/assets/3bhk_ext_2.jpg'
+    `${REPO_BASE}assets/3bhk_ext_1.jpg`,
+    `${REPO_BASE}assets/3bhk_terrace.jpg`,
+    `${REPO_BASE}assets/3bhk_ext_2.jpg`
   ],
   '4 BHK': [
-    '/assets/4bhk_exterior.jpg',
-    '/assets/4bhk_facade.jpg',
-    '/assets/4bhk_balcony.jpg',
-    '/assets/4bhk_terrace.jpg'
+    `${REPO_BASE}assets/4bhk_exterior.jpg`,
+    `${REPO_BASE}assets/4bhk_facade.jpg`,
+    `${REPO_BASE}assets/4bhk_balcony.jpg`,
+    `${REPO_BASE}assets/4bhk_terrace.jpg`
   ]
 };
 
@@ -455,6 +455,7 @@ export default function App() {
           zoom={18} 
           className="h-full w-full bg-[#f1ece1]"
           zoomControl={false}
+          attributionControl={false}
         >
           {mapType === 'sat' && (
             <TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" attribution="Esri" />
