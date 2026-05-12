@@ -27,6 +27,8 @@ const BEACH_LOC = { lat: 14.961497, lng: 74.048541 };
 const TALPONA_BEACH_LOC = { lat: 14.976814, lng: 74.042358 };
 const NIRAKAR_GROUND_LOC = { lat: 14.948755, lng: 74.056363 };
 const SCHOOL_LOC = { lat: 14.948146, lng: 74.056558 };
+const HAVANA_LOC = { lat: 14.962635, lng: 74.052656 };
+const SUPERMARKET_LOC = { lat: 14.959160, lng: 74.053358 };
 const LALIT_LOC = { lat: 14.991451, lng: 74.042100 };
 const NH66_LABEL_LOC = { lat: 14.951625, lng: 74.054830 };
 const NH66_LABEL_LOC_2 = { lat: 14.993460, lng: 74.043818 };
@@ -157,6 +159,7 @@ const getBoundsFromCenter = (centerLat: number, centerLng: number, heightMeters:
 export default function App() {
   const [villas, setVillas] = useState<Villa[]>([]);
   const [selectedVilla, setSelectedVilla] = useState<Villa | null>(null);
+  const [selectedRender, setSelectedRender] = useState<string | null>(null);
   const [floor, setFloor] = useState<'gf' | 'ff'>('gf');
   const [mode, setMode] = useState<'wd' | 'wod'>('wd');
   const [mapType, setMapType] = useState<'sat' | 'street' | 'hybrid'>('sat');
@@ -315,6 +318,30 @@ export default function App() {
               * Select a villa to view technical floor plans, dimensions and artistic perspectives.
             </p>
           </section>
+
+          {/* Renders Section */}
+          <section className="p-5 border-t border-[#e3dcce]">
+            <h2 className="text-[10px] font-bold text-[#8a8676] uppercase tracking-[0.2em] mb-4">Project Renders</h2>
+            <div className="grid grid-cols-2 gap-2">
+              {['Aerial View', '2 BHK', '3 BHK', '4 BHK'].map((name) => (
+                <button
+                  key={name}
+                  onClick={() => {
+                    setSelectedRender(name);
+                    if (window.innerWidth < 1024) setIsSidebarOpen(false);
+                  }}
+                  className={`py-3 px-2 text-[10px] font-bold rounded border transition-all flex items-center justify-between group ${
+                    selectedRender === name
+                      ? 'bg-[#4a6b43] text-white border-[#4a6b43] shadow-md'
+                      : 'bg-white border-[#e3dcce] hover:border-[#6b8e64] hover:bg-[#e9efe5] text-[#4a5249]'
+                  }`}
+                >
+                  <span className="uppercase tracking-wider">{name}</span>
+                  <ChevronRight size={14} className={selectedRender === name ? 'text-white/70' : 'text-[#cdc3b1] group-hover:text-[#6b8e64]'} />
+                </button>
+              ))}
+            </div>
+          </section>
         </div>
 
         <footer className="p-4 border-t border-[#e3dcce] bg-[#f1ece1] text-[9px] text-[#8a8676] leading-normal uppercase tracking-widest text-center font-medium">
@@ -442,6 +469,24 @@ export default function App() {
             </Tooltip>
           </Marker>
 
+          <Marker 
+            position={[HAVANA_LOC.lat, HAVANA_LOC.lng]} 
+            icon={beachIcon}
+          >
+            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+              Havana Bar & Restaurant
+            </Tooltip>
+          </Marker>
+
+          <Marker 
+            position={[SUPERMARKET_LOC.lat, SUPERMARKET_LOC.lng]} 
+            icon={beachIcon}
+          >
+            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+              Supermarket
+            </Tooltip>
+          </Marker>
+
           <CircleMarker 
             center={[config.anchorLat, config.anchorLng]} 
             radius={8} 
@@ -464,93 +509,155 @@ export default function App() {
         </div>
       </main>
 
-      {/* Villa Modal */}
-      <AnimatePresence>
-        {selectedVilla && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-[#2f3a30]/50 lg:backdrop-blur-none backdrop-blur-sm"
-            onClick={() => setSelectedVilla(null)}
-          >
+        {/* Villa Modal */}
+        <AnimatePresence>
+          {selectedVilla && (
             <motion.div 
-              initial={{ scale: 0.95, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.95, y: 20 }}
-              className="bg-white rounded-xl shadow-2xl w-full max-w-6xl h-full lg:h-[85vh] max-h-[95vh] lg:max-h-[85vh] overflow-hidden flex flex-col"
-              onClick={e => e.stopPropagation()}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#2f3a30]/50 lg:backdrop-blur-none backdrop-blur-sm"
+              onClick={() => setSelectedVilla(null)}
             >
-              <div className="flex-none flex items-center justify-between p-4 lg:p-6 border-b border-[#e3dcce] bg-linear-to-b from-[#fbf8f1] to-white">
-                <h3 className="text-xl lg:text-2xl font-cardo text-[#4a6b43]">Villa {selectedVilla.n.toString().padStart(2, '0')}</h3>
-                <button 
-                  onClick={() => setSelectedVilla(null)}
-                  className="p-2 hover:bg-[#e9efe5] rounded-full transition-colors text-[#8a8676]"
-                >
-                  <X size={24} />
-                </button>
-              </div>
+              <motion.div 
+                initial={{ scale: 0.95, y: 20 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.95, y: 20 }}
+                className="bg-white rounded-xl shadow-2xl w-full max-w-6xl h-[90vh] max-h-[90vh] overflow-hidden flex flex-col"
+                onClick={e => e.stopPropagation()}
+              >
+                <div className="flex-none flex items-center justify-between p-4 lg:p-6 border-b border-[#e3dcce] bg-linear-to-b from-[#fbf8f1] to-white">
+                  <h3 className="text-xl lg:text-2xl font-cardo text-[#4a6b43]">Villa {selectedVilla.n.toString().padStart(2, '0')}</h3>
+                  <button 
+                    onClick={() => setSelectedVilla(null)}
+                    className="p-2 hover:bg-[#e9efe5] rounded-full transition-colors text-[#8a8676]"
+                  >
+                    <X size={24} />
+                  </button>
+                </div>
 
-              <div className="flex-none bg-[#f1ece1] p-2 lg:p-4 border-b border-[#e3dcce]">
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-3 lg:gap-4">
-                  <div className="flex w-full sm:w-auto gap-1 bg-white p-1 rounded-lg shadow-sm">
-                    <button 
-                      onClick={() => setFloor('gf')}
-                      className={`flex-1 sm:flex-none px-4 lg:px-6 py-2 text-[10px] lg:text-xs font-bold rounded-md transition-all ${floor === 'gf' ? 'bg-[#6b8e64] text-white' : 'text-[#4a5249] hover:bg-[#e9efe5]'}`}
-                    >
-                      Ground Floor
-                    </button>
-                    <button 
-                      onClick={() => setFloor('ff')}
-                      className={`flex-1 sm:flex-none px-4 lg:px-6 py-2 text-[10px] lg:text-xs font-bold rounded-md transition-all ${floor === 'ff' ? 'bg-[#6b8e64] text-white' : 'text-[#4a5249] hover:bg-[#e9efe5]'}`}
-                    >
-                      First Floor
-                    </button>
-                  </div>
+                <div className="flex-none bg-[#f1ece1] p-2 lg:p-4 border-b border-[#e3dcce]">
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-3 lg:gap-4">
+                    <div className="flex w-full sm:w-auto gap-1 bg-white p-1 rounded-lg shadow-sm">
+                      <button 
+                        onClick={() => setFloor('gf')}
+                        className={`flex-1 sm:flex-none px-4 lg:px-6 py-2 text-[10px] lg:text-xs font-bold rounded-md transition-all ${floor === 'gf' ? 'bg-[#6b8e64] text-white' : 'text-[#4a5249] hover:bg-[#e9efe5]'}`}
+                      >
+                        Ground Floor
+                      </button>
+                      <button 
+                        onClick={() => setFloor('ff')}
+                        className={`flex-1 sm:flex-none px-4 lg:px-6 py-2 text-[10px] lg:text-xs font-bold rounded-md transition-all ${floor === 'ff' ? 'bg-[#6b8e64] text-white' : 'text-[#4a5249] hover:bg-[#e9efe5]'}`}
+                      >
+                        First Floor
+                      </button>
+                    </div>
 
-                  <div className="flex w-full sm:w-auto gap-1 bg-white p-1 rounded-lg shadow-sm">
-                    <button 
-                      onClick={() => setMode('wd')}
-                      className={`flex-1 sm:flex-none px-4 lg:px-6 py-2 text-[10px] lg:text-xs font-bold rounded-md transition-all ${mode === 'wd' ? 'bg-[#b48a4f] text-white' : 'text-[#4a5249] hover:bg-[#e9efe5]'}`}
-                    >
-                      With Dimensions
-                    </button>
-                    <button 
-                      onClick={() => setMode('wod')}
-                      className={`flex-1 sm:flex-none px-4 lg:px-6 py-2 text-[10px] lg:text-xs font-bold rounded-md transition-all ${mode === 'wod' ? 'bg-[#b48a4f] text-white' : 'text-[#4a5249] hover:bg-[#e9efe5]'}`}
-                    >
-                      Without Dimensions
-                    </button>
+                    <div className="flex w-full sm:w-auto gap-1 bg-white p-1 rounded-lg shadow-sm">
+                      <button 
+                        onClick={() => setMode('wd')}
+                        className={`flex-1 sm:flex-none px-4 lg:px-6 py-2 text-[10px] lg:text-xs font-bold rounded-md transition-all ${mode === 'wd' ? 'bg-[#b48a4f] text-white' : 'text-[#4a5249] hover:bg-[#e9efe5]'}`}
+                      >
+                        With Dimensions
+                      </button>
+                      <button 
+                        onClick={() => setMode('wod')}
+                        className={`flex-1 sm:flex-none px-4 lg:px-6 py-2 text-[10px] lg:text-xs font-bold rounded-md transition-all ${mode === 'wod' ? 'bg-[#b48a4f] text-white' : 'text-[#4a5249] hover:bg-[#e9efe5]'}`}
+                      >
+                        Without Dimensions
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="flex-1 min-h-0 bg-[#f1ece1] relative overflow-hidden flex items-center justify-center p-6 lg:p-12">
-                {villaPlanUrl ? (
-                  <div className="w-full h-full flex items-center justify-center">
-                    <img 
-                      src={villaPlanUrl} 
-                      alt={`Villa ${selectedVilla.n} ${floor} ${mode}`} 
-                      className="max-w-full max-h-full object-contain bg-white shadow-2xl rounded lg:p-6 cursor-zoom-in"
-                      onClick={() => window.open(villaPlanUrl, '_blank')}
-                    />
-                  </div>
-                ) : (
-                  <div className="text-center py-20">
-                    <Info className="mx-auto text-[#cdc3b1] mb-2" size={48} />
-                    <p className="text-[#8a8676]">Floor plan for this selection is being updated.</p>
-                  </div>
-                )}
-              </div>
+                <div className="flex-1 min-h-0 bg-[#f1ece1] relative overflow-hidden flex items-center justify-center p-6 lg:p-12">
+                  {villaPlanUrl ? (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <img 
+                        src={villaPlanUrl} 
+                        alt={`Villa ${selectedVilla.n} ${floor} ${mode}`} 
+                        className="max-w-full max-h-full object-contain bg-white shadow-2xl rounded lg:p-6 cursor-zoom-in"
+                        onClick={() => window.open(villaPlanUrl, '_blank')}
+                      />
+                    </div>
+                  ) : (
+                    <div className="text-center py-20">
+                      <Info className="mx-auto text-[#cdc3b1] mb-2" size={48} />
+                      <p className="text-[#8a8676]">Floor plan for this selection is being updated.</p>
+                    </div>
+                  )}
+                </div>
 
-              <div className="flex-none p-4 bg-white border-t border-[#e3dcce] flex justify-between text-[10px] text-[#8a8676] font-medium tracking-widest uppercase">
-                <span>La Isla / Architectural Planning</span>
-                <span>Click image to view in high resolution</span>
-              </div>
+                <div className="flex-none p-4 bg-white border-t border-[#e3dcce] flex justify-between text-[10px] text-[#8a8676] font-medium tracking-widest uppercase">
+                  <span>La Isla / Architectural Planning</span>
+                  <span>Click image to view in high resolution</span>
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>
+
+        {/* Render Modal */}
+        <AnimatePresence>
+          {selectedRender && (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#2f3a30]/50 lg:backdrop-blur-none backdrop-blur-sm"
+              onClick={() => setSelectedRender(null)}
+            >
+              <motion.div 
+                initial={{ scale: 0.95, y: 20 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.95, y: 20 }}
+                className="bg-white rounded-xl shadow-2xl w-full max-w-6xl h-[90vh] max-h-[90vh] overflow-hidden flex flex-col"
+                onClick={e => e.stopPropagation()}
+              >
+                <div className="flex-none flex items-center justify-between p-4 lg:p-6 border-b border-[#e3dcce] bg-linear-to-b from-[#fbf8f1] to-white">
+                  <h3 className="text-xl lg:text-2xl font-cardo text-[#4a6b43]">{selectedRender}</h3>
+                  <button 
+                    onClick={() => setSelectedRender(null)}
+                    className="p-2 hover:bg-[#e9efe5] rounded-full transition-colors text-[#8a8676]"
+                  >
+                    <X size={24} />
+                  </button>
+                </div>
+
+                <div className="flex-1 min-h-0 bg-[#f1ece1] relative overflow-hidden flex items-center justify-center p-6 lg:p-12">
+                  <div className="w-full h-full flex flex-col items-center justify-center gap-6">
+                    <div className="relative group cursor-zoom-in">
+                      <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors rounded"></div>
+                      {/* Placeholder until user uploads actual renders */}
+                      <div className="w-[800px] h-[500px] bg-white shadow-2xl rounded flex flex-col items-center justify-center border-2 border-dashed border-[#cdc3b1] p-12 text-center">
+                        <div className="w-20 h-20 bg-[#e9efe5] rounded-full flex items-center justify-center mb-6 text-[#4a6b43]">
+                          <Maximize size={40} />
+                        </div>
+                        <h4 className="text-2xl font-cardo text-[#4a6b43] mb-4">{selectedRender} Perspective</h4>
+                        <p className="max-w-md text-[#8a8676] leading-relaxed mb-8">
+                          The artistic visualization for <span className="font-bold">{selectedRender}</span> is currently being prepared for the high-resolution viewer.
+                        </p>
+                        <div className="flex gap-4">
+                          <div className="px-5 py-2 bg-[#f6f2ea] rounded-full text-[10px] font-bold text-[#8a8676] uppercase tracking-widest border border-[#e3dcce]">
+                            Pending Assets
+                          </div>
+                          <div className="px-5 py-2 bg-[#6b8e64] rounded-full text-[10px] font-bold text-white uppercase tracking-widest shadow-lg">
+                            Ready for Upload
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex-none p-4 bg-white border-t border-[#e3dcce] flex justify-between text-[10px] text-[#8a8676] font-medium tracking-widest uppercase">
+                  <span>La Isla / Project Visualization</span>
+                  <span>Artist's Impression</span>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
       <style dangerouslySetInnerHTML={{ __html: `
         .custom-scrollbar::-webkit-scrollbar { width: 4px; }
