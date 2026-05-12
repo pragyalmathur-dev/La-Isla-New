@@ -591,13 +591,13 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="flex-1 min-h-0 bg-[#f1ece1] relative overflow-hidden flex items-center justify-center p-6 lg:p-12">
+                <div className="flex-1 min-h-0 bg-[#f1ece1] relative overflow-hidden flex items-center justify-center p-4 lg:p-8">
                   {villaPlanUrl ? (
-                    <div className="w-full h-full flex items-center justify-center">
+                    <div className="w-full h-full flex items-center justify-center relative">
                       <img 
                         src={villaPlanUrl} 
                         alt={`Villa ${selectedVilla.n} ${floor} ${mode}`} 
-                        className="max-w-full max-h-full object-contain bg-white shadow-2xl rounded lg:p-6 cursor-zoom-in"
+                        className="max-w-[95%] max-h-[95%] object-contain bg-white shadow-2xl rounded lg:p-4 cursor-zoom-in transition-all duration-300"
                         onClick={() => window.open(villaPlanUrl, '_blank')}
                       />
                     </div>
@@ -655,17 +655,17 @@ export default function App() {
                   </button>
                 </div>
 
-                <div className="flex-1 min-h-0 bg-[#f1ece1] relative overflow-hidden flex items-center justify-center p-4 lg:p-12">
+                <div className="flex-1 min-h-0 bg-[#f1ece1] relative overflow-hidden flex items-center justify-center p-4 lg:p-8">
                   {PROJECT_RENDERS[selectedRender] ? (
-                    <div className="w-full h-full flex flex-col items-center justify-center gap-6">
-                      <div className="flex-1 w-full flex items-center justify-center relative group">
+                    <div className="w-full h-full flex flex-col items-center justify-center gap-4">
+                      <div className="flex-1 w-full min-h-0 flex items-center justify-center relative group">
                         {Array.isArray(PROJECT_RENDERS[selectedRender]) ? (
                           <>
                             <img 
                               key={activeImageIndex}
                               src={(PROJECT_RENDERS[selectedRender] as string[])[activeImageIndex]} 
                               alt={`${selectedRender} - ${activeImageIndex + 1}`} 
-                              className="max-w-full max-h-full object-contain bg-white shadow-2xl rounded lg:p-2 cursor-zoom-in"
+                              className="max-w-[95%] max-h-[95%] object-contain bg-white shadow-2xl rounded p-1 lg:p-2 cursor-zoom-in transition-all duration-300"
                               onClick={() => window.open((PROJECT_RENDERS[selectedRender] as string[])[activeImageIndex], '_blank')}
                             />
                             
@@ -690,7 +690,7 @@ export default function App() {
                           <img 
                             src={PROJECT_RENDERS[selectedRender] as string} 
                             alt={selectedRender} 
-                            className="max-w-full max-h-full object-contain bg-white shadow-2xl rounded lg:p-2 cursor-zoom-in"
+                            className="max-w-[95%] max-h-[95%] object-contain bg-white shadow-2xl rounded p-1 lg:p-2 cursor-zoom-in transition-all duration-300"
                             onClick={() => window.open(PROJECT_RENDERS[selectedRender] as string, '_blank')}
                           />
                         )}
@@ -713,13 +713,13 @@ export default function App() {
                       )}
                     </div>
                   ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center gap-6">
-                      <div className="relative group cursor-zoom-in">
+                    <div className="w-full h-full flex flex-col items-center justify-center gap-6 p-4">
+                      <div className="relative group cursor-zoom-in w-full flex justify-center">
                         <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors rounded"></div>
                         {/* Placeholder until user uploads actual renders */}
-                        <div className="w-[800px] h-[500px] bg-white shadow-2xl rounded flex flex-col items-center justify-center border-2 border-dashed border-[#cdc3b1] p-12 text-center">
-                          <div className="w-20 h-20 bg-[#e9efe5] rounded-full flex items-center justify-center mb-6 text-[#4a6b43]">
-                            <Maximize size={40} />
+                        <div className="w-full max-w-4xl aspect-video bg-white shadow-2xl rounded flex flex-col items-center justify-center border-2 border-dashed border-[#cdc3b1] p-6 lg:p-12 text-center mx-4">
+                          <div className="w-12 h-12 lg:w-20 lg:h-20 bg-[#e9efe5] rounded-full flex items-center justify-center mb-4 lg:mb-6 text-[#4a6b43]">
+                            <Maximize size={40} className="w-8 h-8 lg:w-10 lg:h-10" />
                           </div>
                           <h4 className="text-2xl font-cardo text-[#4a6b43] mb-4">{selectedRender} Perspective</h4>
                           <p className="max-w-md text-[#8a8676] leading-relaxed mb-8">
