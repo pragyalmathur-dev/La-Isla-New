@@ -286,8 +286,7 @@ const PLAN_ASPECT = 2347 / 4044;
 const metersToLatDeg = (m: number) => m / 111320;
 const metersToLngDeg = (m: number, lat: number) => m / (111320 * Math.cos(lat * Math.PI / 180));
 
-const getCenterFromEntry = (entryLat: number, entryLng: number, heightMeters: number, rotDeg: number) => {
-  const widthMeters = heightMeters * PLAN_ASPECT;
+const getCenterFromEntry = (entryLat: number, entryLng: number, widthMeters: number, heightMeters: number, rotDeg: number) => {
   const eastOff = (ENTRY_FRAC.x - 0.5) * widthMeters;
   const northOff = (0.5 - ENTRY_FRAC.y) * heightMeters;
   
@@ -302,12 +301,9 @@ const getCenterFromEntry = (entryLat: number, entryLng: number, heightMeters: nu
   return { lat: centerLat, lng: centerLng };
 };
 
-const getBoundsFromCenter = (centerLat: number, centerLng: number, heightMeters: number) => {
-  const halfH = heightMeters / 2;
-  const widthMeters = heightMeters * PLAN_ASPECT;
-  const halfW = widthMeters / 2;
-  const dLat = metersToLatDeg(halfH);
-  const dLng = metersToLngDeg(halfW, centerLat);
+const getBoundsFromCenter = (centerLat: number, centerLng: number, widthMeters: number, heightMeters: number) => {
+  const dLat = metersToLatDeg(heightMeters / 2);
+  const dLng = metersToLngDeg(widthMeters / 2, centerLat);
   return [
     [centerLat - dLat, centerLng - dLng],
     [centerLat + dLat, centerLng + dLng]
@@ -349,15 +345,17 @@ export default function App() {
   });
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [map, setMap] = useState<L.Map | null>(null);
+  const [showDevTools, setShowDevTools] = useState(false);
   
-  // Final Fixed Calibration
-  const config = {
-    scale: 363.5,
+  // Developer Tool State
+  const [config, setConfig] = useState({
+    scaleH: 363.5,
+    scaleW: 363.5 * PLAN_ASPECT,
     rotation: -1.95,
     opacity: 0.85,
     anchorLat: ANCHOR.lat,
     anchorLng: ANCHOR.lng
-  };
+  });
 
   useEffect(() => {
     fetch(ASSET_VILLAS_JSON)
@@ -367,8 +365,8 @@ export default function App() {
   }, []);
 
   const bounds = useMemo(() => {
-    const center = getCenterFromEntry(config.anchorLat, config.anchorLng, config.scale, config.rotation);
-    return getBoundsFromCenter(center.lat, center.lng, config.scale);
+    const center = getCenterFromEntry(config.anchorLat, config.anchorLng, config.scaleW, config.scaleH, config.rotation);
+    return getBoundsFromCenter(center.lat, center.lng, config.scaleW, config.scaleH);
   }, [config]);
 
   // Handle image rotation via CSS
@@ -971,6 +969,132 @@ export default function App() {
         </div>
       </main>
 
+      {/* Developer Calibration Tool */}
+      {showDevTools && (
+        <div className="fixed top-4 right-4 z-[3000] w-80 bg-white shadow-2xl rounded-2xl border border-[#094f39]/20 p-6 font-mulish overflow-y-auto max-h-[80vh]">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="font-bold text-[#094f39] uppercase tracking-widest text-sm flex items-center gap-2">
+              <Settings className="w-5 h-5" />
+              Dev Calibration
+            </h3>
+            <button onClick={() => setShowDevTools(false)} className="p-1 hover:bg-gray-100 rounded-lg">
+              <X className="w-5 h-5 text-gray-400" />
+            </button>
+          </div>
+
+          <div className="space-y-6">
+            {/* Scale High */}
+            <div>
+              <div className="flex justify-between mb-2">
+                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Height Scale (m)</label>
+                <span className="text-xs font-mono font-bold text-[#094f39]">{config.scaleH.toFixed(2)}</span>
+              </div>
+              <input 
+                type="range" min="100" max="1000" step="0.1" 
+                value={config.scaleH} 
+                onChange={(e) => {
+                  const val = parseFloat(e.target.value);
+                  setConfig(prev => ({ ...prev, scaleH: val }));
+                }}
+                className="w-full accent-[#094f39] h-1.5 bg-gray-100 rounded-lg appearance-none cursor-pointer"
+              />
+            </div>
+
+            {/* Scale Width (Stretch) */}
+            <div>
+              <div className="flex justify-between mb-2">
+                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Width Scale (m)</label>
+                <span className="text-xs font-mono font-bold text-[#b48a4f]">{config.scaleW.toFixed(2)}</span>
+              </div>
+              <input 
+                type="range" min="100" max="1000" step="0.1" 
+                value={config.scaleW} 
+                onChange={(e) => {
+                  const val = parseFloat(e.target.value);
+                  setConfig(prev => ({ ...prev, scaleW: val }));
+                }}
+                className="w-full accent-[#b48a4f] h-1.5 bg-gray-100 rounded-lg appearance-none cursor-pointer"
+              />
+            </div>
+
+            {/* Rotation */}
+            <div>
+              <div className="flex justify-between mb-2">
+                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Rotation (°)</label>
+                <span className="text-xs font-mono font-bold text-[#094f39]">{config.rotation.toFixed(2)}</span>
+              </div>
+              <input 
+                type="range" min="-180" max="180" step="0.01" 
+                value={config.rotation} 
+                onChange={(e) => setConfig(prev => ({ ...prev, rotation: parseFloat(e.target.value) }))}
+                className="w-full accent-[#094f39] h-1.5 bg-gray-100 rounded-lg appearance-none cursor-pointer"
+              />
+            </div>
+
+            {/* Latitude Marker */}
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-wider block mb-1">Anchor Lat</label>
+                <input 
+                  type="number" step="0.00001" 
+                  value={config.anchorLat} 
+                  onChange={(e) => setConfig(prev => ({ ...prev, anchorLat: parseFloat(e.target.value) }))}
+                  className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-xs font-mono"
+                />
+              </div>
+              <div>
+                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-wider block mb-1">Anchor Lng</label>
+                <input 
+                  type="number" step="0.00001" 
+                  value={config.anchorLng} 
+                  onChange={(e) => setConfig(prev => ({ ...prev, anchorLng: parseFloat(e.target.value) }))}
+                  className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-xs font-mono"
+                />
+              </div>
+            </div>
+
+            {/* Opacity */}
+            <div>
+              <div className="flex justify-between mb-2">
+                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Opacity</label>
+                <span className="text-xs font-mono font-bold text-[#094f39]">{config.opacity.toFixed(2)}</span>
+              </div>
+              <input 
+                type="range" min="0" max="1" step="0.01" 
+                value={config.opacity} 
+                onChange={(e) => setConfig(prev => ({ ...prev, opacity: parseFloat(e.target.value) }))}
+                className="w-full accent-[#094f39] h-1.5 bg-gray-100 rounded-lg appearance-none cursor-pointer"
+              />
+            </div>
+
+            <div className="pt-4 border-t border-gray-100">
+              <button 
+                onClick={() => {
+                  const out = JSON.stringify(config, null, 2);
+                  navigator.clipboard.writeText(out);
+                  alert("Configuration copied to clipboard!");
+                }}
+                className="w-full py-3 bg-[#094f39] text-white rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#073d2c] transition-all cursor-pointer"
+              >
+                <Ruler className="w-4 h-4" />
+                Copy Final Config
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Dev Tool Toggle Button */}
+      {userEmail === 'pragyalmathur@gmail.com' && (
+        <button 
+          onClick={() => setShowDevTools(!showDevTools)}
+          className="fixed bottom-24 right-6 z-[1000] w-12 h-12 bg-[#094f39] text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all cursor-pointer border-2 border-white/20"
+          title="Toggle Calibration Tools"
+        >
+          <Settings className={`w-6 h-6 ${showDevTools ? 'animate-spin-slow' : ''}`} />
+        </button>
+      )}
+
         {/* Villa Modal */}
         <AnimatePresence>
           {selectedVilla && (
@@ -1194,6 +1318,12 @@ export default function App() {
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #e3dcce; border-radius: 2px; }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #6b8e64; }
+        
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow { animation: spin-slow 8s linear infinite; }
         
         .leaflet-container { font-family: "Mulish", sans-serif !important; font-weight: 300; }
         .siteplan-img { transition: opacity 0.3s ease; filter: contrast(1.1) brightness(1.05); pointer-events: none; }
