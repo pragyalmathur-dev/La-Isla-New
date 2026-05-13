@@ -42,7 +42,7 @@ const PROJECT_RENDERS: Record<string, string | string[]> = {
 };
 
 // Final Anchor from user calibration
-const ANCHOR = { lat: 14.94975, lng: 74.05185 };
+const ANCHOR = { lat: 14.95031, lng: 74.05325 };
 
 const BEACH_LOC = { lat: 14.961497, lng: 74.048541 };
 const XANDREM_BEACH_LOC = { lat: 14.939333, lng: 74.045792 };
@@ -349,12 +349,12 @@ export default function App() {
   
   // Developer Tool State
   const [config, setConfig] = useState({
-    scaleH: 254.40,
-    scaleW: 423.80,
-    rotation: -89.62,
-    opacity: 0.82,
-    anchorLat: 14.94975,
-    anchorLng: 74.05185
+    scaleH: 411.40,
+    scaleW: 364.40,
+    rotation: -2.36,
+    opacity: 1.00,
+    anchorLat: 14.95031,
+    anchorLng: 74.05325
   });
 
   useEffect(() => {
