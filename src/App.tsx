@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, ImageOverlay, CircleMarker, Tooltip, Polyline,
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { motion, AnimatePresence } from 'motion/react';
-import { Map as MapIcon, Layers, Maximize, Navigation, Info, ChevronRight, X, Ruler, Plus, Minus, Move, Menu, LogOut } from 'lucide-react';
+import { Map as MapIcon, Layers, Maximize, Navigation, Info, ChevronRight, X, Ruler, Plus, Minus, Move, Menu, LogOut, Utensils, BookOpen, Palmtree, Trophy, Church } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
@@ -49,6 +49,7 @@ const XANDREM_BEACH_LOC = { lat: 14.939333, lng: 74.045792 };
 const TOLIVIA_BEACH_LOC = { lat: 14.934657, lng: 74.047156 };
 const TALPONA_BEACH_LOC = { lat: 14.976814, lng: 74.042358 };
 const NIRAKAR_GROUND_LOC = { lat: 14.948755, lng: 74.056363 };
+const BLUEMOON_LOC = { lat: 14.980423, lng: 74.041433 };
 const SCHOOL_LOC = { lat: 14.948146, lng: 74.056558 };
 const NIRAKAR_HIGH_SCHOOL_LOC = { lat: 14.960280, lng: 74.055549 };
 const CHURCH_LOC = { lat: 14.964358, lng: 74.048235 };
@@ -87,6 +88,83 @@ const beachIcon = L.divIcon({
       <div class="absolute w-8 h-8 bg-[#094f39] rounded-full opacity-30 animate-ping -mt-1"></div>
       <div class="relative w-7 h-7 bg-[#094f39] rounded-full border-2 border-white shadow-lg flex items-center justify-center z-10">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+    </div>
+  `,
+  iconSize: [28, 28],
+  iconAnchor: [14, 28],
+});
+
+// Custom Restaurant/Cafe Icon
+const restaurantIcon = L.divIcon({
+  className: 'bg-transparent',
+  html: `
+    <div class="relative flex flex-col items-center">
+      <div class="absolute w-8 h-8 bg-[#B9816B] rounded-full opacity-30 animate-ping -mt-1"></div>
+      <div class="relative w-7 h-7 bg-[#B9816B] rounded-full border-2 border-white shadow-lg flex items-center justify-center z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/>
+          <path d="M7 2v20"/>
+          <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>
+        </svg>
+      </div>
+    </div>
+  `,
+  iconSize: [28, 28],
+  iconAnchor: [14, 28],
+});
+
+// Custom School Icon
+const schoolIcon = L.divIcon({
+  className: 'bg-transparent',
+  html: `
+    <div class="relative flex flex-col items-center">
+      <div class="absolute w-8 h-8 bg-[#4285F4] rounded-full opacity-30 animate-ping -mt-1"></div>
+      <div class="relative w-7 h-7 bg-[#4285F4] rounded-full border-2 border-white shadow-lg flex items-center justify-center z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-5"/>
+        </svg>
+      </div>
+    </div>
+  `,
+  iconSize: [28, 28],
+  iconAnchor: [14, 28],
+});
+
+// Custom Sports/Cricket Icon
+const sportsIcon = L.divIcon({
+  className: 'bg-transparent',
+  html: `
+    <div class="relative flex flex-col items-center">
+      <div class="absolute w-8 h-8 bg-[#4CAF50] rounded-full opacity-30 animate-ping -mt-1"></div>
+      <div class="relative w-7 h-7 bg-[#4CAF50] rounded-full border-2 border-white shadow-lg flex items-center justify-center z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+          <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+          <path d="M4 22h16"/>
+          <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+          <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+          <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+        </svg>
+      </div>
+    </div>
+  `,
+  iconSize: [28, 28],
+  iconAnchor: [14, 28],
+});
+
+// Custom Church/Spiritual Icon
+const churchIcon = L.divIcon({
+  className: 'bg-transparent',
+  html: `
+    <div class="relative flex flex-col items-center">
+      <div class="absolute w-8 h-8 bg-[#673AB7] rounded-full opacity-30 animate-ping -mt-1"></div>
+      <div class="relative w-7 h-7 bg-[#673AB7] rounded-full border-2 border-white shadow-lg flex items-center justify-center z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v20"/>
+          <path d="M7 9h10"/>
+        </svg>
       </div>
     </div>
   `,
@@ -268,6 +346,13 @@ export default function App() {
   const [floor, setFloor] = useState<'gf' | 'ff'>('gf');
   const [mode, setMode] = useState<'wd' | 'wod'>('wd');
   const [mapType, setMapType] = useState<'sat' | 'street' | 'hybrid'>('sat');
+  const [filters, setFilters] = useState({
+    restaurants: true,
+    education: true,
+    tourist: true,
+    sports: true,
+    spiritual: true
+  });
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [map, setMap] = useState<L.Map | null>(null);
   
@@ -513,6 +598,41 @@ export default function App() {
               ))}
             </div>
           </section>
+
+          {/* Filters Section */}
+          <section className="p-5 border-t border-[#e3dcce] bg-[#fbf8f1]/50">
+            <h2 className="text-[10px] font-bold text-[#8a8676] uppercase tracking-[0.2em] mb-4">Location Filters</h2>
+            <div className="space-y-2">
+              {[
+                { id: 'restaurants', label: 'Restaurants', icon: Utensils, color: '#B9816B' },
+                { id: 'education', label: 'Education', icon: BookOpen, color: '#4285F4' },
+                { id: 'tourist', label: 'Tourist Spots', icon: Palmtree, color: '#094f39' },
+                { id: 'sports', label: 'Sports', icon: Trophy, color: '#4CAF50' },
+                { id: 'spiritual', label: 'Spiritual', icon: Church, color: '#673AB7' },
+              ].map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => setFilters(prev => ({ ...prev, [cat.id]: !prev[cat.id as keyof typeof filters] }))}
+                  className={`w-full flex items-center gap-3 p-3 rounded-xl border transition-all ${
+                    filters[cat.id as keyof typeof filters]
+                      ? 'bg-white border-[#e3dcce] shadow-sm'
+                      : 'bg-gray-50/50 border-transparent opacity-50 grayscale'
+                  }`}
+                >
+                  <div 
+                    className="w-8 h-8 rounded-full flex items-center justify-center text-white shadow-sm"
+                    style={{ backgroundColor: cat.color }}
+                  >
+                    <cat.icon size={16} />
+                  </div>
+                  <span className={`text-xs font-bold uppercase tracking-widest ${filters[cat.id as keyof typeof filters] ? 'text-[#4a5249]' : 'text-gray-400'}`}>
+                    {cat.label}
+                  </span>
+                  <div className={`ml-auto w-2 h-2 rounded-full ${filters[cat.id as keyof typeof filters] ? 'bg-green-500 animate-pulse' : 'bg-gray-300'}`} />
+                </button>
+              ))}
+            </div>
+          </section>
         </div>
 
         <footer className="p-4 border-t border-[#e3dcce] bg-[#f1ece1] text-[9px] text-[#8a8676] leading-normal uppercase tracking-widest text-center font-medium">
@@ -606,179 +726,207 @@ export default function App() {
             </Tooltip>
           </Marker>
 
-          <Marker 
-            position={[BEACH_LOC.lat, BEACH_LOC.lng]} 
-            icon={beachIcon}
-          >
-            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              <div className="text-center">
-                <div>Galgibaga Beach</div>
-                <div>5 Mins Drive</div>
-                <div>3 Km Away</div>
-              </div>
-            </Tooltip>
-          </Marker>
+          {filters.tourist && (
+            <>
+              <Marker 
+                position={[BEACH_LOC.lat, BEACH_LOC.lng]} 
+                icon={beachIcon}
+              >
+                <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+                  <div className="text-center">
+                    <div>Galgibaga Beach</div>
+                    <div>5 Mins Drive</div>
+                    <div>3 Km Away</div>
+                  </div>
+                </Tooltip>
+              </Marker>
 
-          <Marker 
-            position={[XANDREM_BEACH_LOC.lat, XANDREM_BEACH_LOC.lng]} 
-            icon={beachIcon}
-          >
-            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              <div className="text-center">
-                <div>Xandrem Beach</div>
-                <div>10 Min Drive</div>
-                <div>3.8 Km Away</div>
-              </div>
-            </Tooltip>
-          </Marker>
+              <Marker 
+                position={[XANDREM_BEACH_LOC.lat, XANDREM_BEACH_LOC.lng]} 
+                icon={beachIcon}
+              >
+                <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+                  <div className="text-center">
+                    <div>Xandrem Beach</div>
+                    <div>10 Min Drive</div>
+                    <div>3.8 Km Away</div>
+                  </div>
+                </Tooltip>
+              </Marker>
 
-          <Marker 
-            position={[TOLIVIA_BEACH_LOC.lat, TOLIVIA_BEACH_LOC.lng]} 
-            icon={beachIcon}
-          >
-            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              <div className="text-center">
-                <div>Tolivia Beach</div>
-                <div>9 Min Drive</div>
-                <div>3.7 Km Away</div>
-              </div>
-            </Tooltip>
-          </Marker>
+              <Marker 
+                position={[TOLIVIA_BEACH_LOC.lat, TOLIVIA_BEACH_LOC.lng]} 
+                icon={beachIcon}
+              >
+                <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+                  <div className="text-center">
+                    <div>Tolivia Beach</div>
+                    <div>9 Min Drive</div>
+                    <div>3.7 Km Away</div>
+                  </div>
+                </Tooltip>
+              </Marker>
 
-          <Marker 
-            position={[TALPONA_BEACH_LOC.lat, TALPONA_BEACH_LOC.lng]} 
-            icon={beachIcon}
-          >
-            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              <div className="text-center">
-                <div>Talpona Beach</div>
-                <div>7 Mins Drive</div>
-                <div>4 Km Away</div>
-              </div>
-            </Tooltip>
-          </Marker>
+              <Marker 
+                position={[TALPONA_BEACH_LOC.lat, TALPONA_BEACH_LOC.lng]} 
+                icon={beachIcon}
+              >
+                <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+                  <div className="text-center">
+                    <div>Talpona Beach</div>
+                    <div>7 Mins Drive</div>
+                    <div>4 Km Away</div>
+                  </div>
+                </Tooltip>
+              </Marker>
 
-          <Marker 
-            position={[LALIT_LOC.lat, LALIT_LOC.lng]} 
-            icon={beachIcon}
-          >
-            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              <div className="text-center">
-                <div>The Lalit Golf & Spa Resort</div>
-                <div>11 Mins Drive</div>
-                <div>7 Km Away</div>
-              </div>
-            </Tooltip>
-          </Marker>
+              <Marker 
+                position={[LALIT_LOC.lat, LALIT_LOC.lng]} 
+                icon={beachIcon}
+              >
+                <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+                  <div className="text-center">
+                    <div>The Lalit Golf & Spa Resort</div>
+                    <div>11 Mins Drive</div>
+                    <div>7 Km Away</div>
+                  </div>
+                </Tooltip>
+              </Marker>
 
-          <Marker 
-            position={[NIRAKAR_GROUND_LOC.lat, NIRAKAR_GROUND_LOC.lng]} 
-            icon={beachIcon}
-          >
-            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              <div className="text-center">
-                <div>Nirakar Cricket Ground</div>
-                <div>1 Min Drive</div>
-                <div>450 M Away</div>
-              </div>
-            </Tooltip>
-          </Marker>
+              <Marker 
+                position={[COTIGAO_LOC.lat, COTIGAO_LOC.lng]} 
+                icon={beachIcon}
+              >
+                <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+                  Cotigao Wildlife Sanctuary
+                </Tooltip>
+              </Marker>
 
-          <Marker 
-            position={[SCHOOL_LOC.lat, SCHOOL_LOC.lng]} 
-            icon={beachIcon}
-          >
-            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              <div className="text-center">
-                <div>S S Angle Higher Secondary School</div>
-                <div>1 Min Drive</div>
-                <div>700 M Away</div>
-              </div>
-            </Tooltip>
-          </Marker>
+              <Marker 
+                position={[MUDAGERI_FALLS_LOC.lat, MUDAGERI_FALLS_LOC.lng]} 
+                icon={beachIcon}
+              >
+                <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+                  Mudageri Falls
+                </Tooltip>
+              </Marker>
+            </>
+          )}
 
-          <Marker 
-            position={[NIRAKAR_HIGH_SCHOOL_LOC.lat, NIRAKAR_HIGH_SCHOOL_LOC.lng]} 
-            icon={beachIcon}
-          >
-            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              <div className="text-center">
-                <div>Nirakar High School</div>
-                <div>3 Min Drive</div>
-                <div>1.8 Km Away</div>
-              </div>
-            </Tooltip>
-          </Marker>
+          {filters.sports && (
+            <Marker 
+              position={[NIRAKAR_GROUND_LOC.lat, NIRAKAR_GROUND_LOC.lng]} 
+              icon={sportsIcon}
+            >
+              <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+                <div className="text-center">
+                  <div>Nirakar Cricket Ground</div>
+                  <div>1 Min Drive</div>
+                  <div>450 M Away</div>
+                </div>
+              </Tooltip>
+            </Marker>
+          )}
+
+          {filters.education && (
+            <>
+              <Marker 
+                position={[SCHOOL_LOC.lat, SCHOOL_LOC.lng]} 
+                icon={schoolIcon}
+              >
+                <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+                  <div className="text-center">
+                    <div>S S Angle Higher Secondary School</div>
+                    <div>1 Min Drive</div>
+                    <div>700 M Away</div>
+                  </div>
+                </Tooltip>
+              </Marker>
+
+              <Marker 
+                position={[NIRAKAR_HIGH_SCHOOL_LOC.lat, NIRAKAR_HIGH_SCHOOL_LOC.lng]} 
+                icon={schoolIcon}
+              >
+                <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+                  <div className="text-center">
+                    <div>Nirakar High School</div>
+                    <div>3 Min Drive</div>
+                    <div>1.8 Km Away</div>
+                  </div>
+                </Tooltip>
+              </Marker>
+            </>
+          )}
           
-          <Marker 
-            position={[CHURCH_LOC.lat, CHURCH_LOC.lng]} 
-            icon={beachIcon}
-          >
-            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              <div className="text-center">
-                <div>Church of St Anthony of Lisbon</div>
-                <div>5 Min Drive</div>
-                <div>2.6 Km Away</div>
-              </div>
-            </Tooltip>
-          </Marker>
+          {filters.spiritual && (
+            <Marker 
+              position={[CHURCH_LOC.lat, CHURCH_LOC.lng]} 
+              icon={churchIcon}
+            >
+              <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+                <div className="text-center">
+                  <div>Church of St Anthony of Lisbon</div>
+                  <div>5 Min Drive</div>
+                  <div>2.6 Km Away</div>
+                </div>
+              </Tooltip>
+            </Marker>
+          )}
 
-          <Marker 
-            position={[HAVANA_LOC.lat, HAVANA_LOC.lng]} 
-            icon={beachIcon}
-          >
-            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              <div className="text-center">
-                <div>Havana Bar & Restaurant</div>
-                <div>4 Mins Drive</div>
-                <div>2 Km Away</div>
-              </div>
-            </Tooltip>
-          </Marker>
+          {filters.restaurants && (
+            <>
+              <Marker 
+                position={[BLUEMOON_LOC.lat, BLUEMOON_LOC.lng]} 
+                icon={restaurantIcon}
+              >
+                <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+                  <div className="text-center">
+                    <div className="font-bold text-[#094f39]">Restaurant</div>
+                    <div>Bluemoon by Neelchand</div>
+                  </div>
+                </Tooltip>
+              </Marker>
 
-          <Marker 
-            position={[CASA_JAALI_LOC.lat, CASA_JAALI_LOC.lng]} 
-            icon={beachIcon}
-          >
-            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              <div className="text-center">
-                <div>Casa Jaali (Cafe)</div>
-                <div>13 Min Drive</div>
-                <div>8.5 Km Away</div>
-              </div>
-            </Tooltip>
-          </Marker>
+              <Marker 
+                position={[HAVANA_LOC.lat, HAVANA_LOC.lng]} 
+                icon={restaurantIcon}
+              >
+                <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+                  <div className="text-center">
+                    <div>Havana Bar & Restaurant</div>
+                    <div>4 Mins Drive</div>
+                    <div>2 Km Away</div>
+                  </div>
+                </Tooltip>
+              </Marker>
 
-          <Marker 
-            position={[COTIGAO_LOC.lat, COTIGAO_LOC.lng]} 
-            icon={beachIcon}
-          >
-            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              Cotigao Wildlife Sanctuary
-            </Tooltip>
-          </Marker>
+              <Marker 
+                position={[CASA_JAALI_LOC.lat, CASA_JAALI_LOC.lng]} 
+                icon={restaurantIcon}
+              >
+                <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+                  <div className="text-center">
+                    <div>Casa Jaali (Cafe)</div>
+                    <div>13 Min Drive</div>
+                    <div>8.5 Km Away</div>
+                  </div>
+                </Tooltip>
+              </Marker>
 
-          <Marker 
-            position={[MUDAGERI_FALLS_LOC.lat, MUDAGERI_FALLS_LOC.lng]} 
-            icon={beachIcon}
-          >
-            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              Mudageri Falls
-            </Tooltip>
-          </Marker>
-
-          <Marker 
-            position={[ZEST_LOC.lat, ZEST_LOC.lng]} 
-            icon={beachIcon}
-          >
-            <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
-              <div className="text-center">
-                <div>Zest (Cafe & Bar)</div>
-                <div>11 Min Drive</div>
-                <div>7.8 Km Away</div>
-              </div>
-            </Tooltip>
-          </Marker>
+              <Marker 
+                position={[ZEST_LOC.lat, ZEST_LOC.lng]} 
+                icon={restaurantIcon}
+              >
+                <Tooltip permanent={false} direction="top" offset={[0, -32]} className="custom-tooltip">
+                  <div className="text-center">
+                    <div>Zest (Cafe & Bar)</div>
+                    <div>11 Min Drive</div>
+                    <div>7.8 Km Away</div>
+                  </div>
+                </Tooltip>
+              </Marker>
+            </>
+          )}
 
           <CircleMarker 
             center={[config.anchorLat, config.anchorLng]} 

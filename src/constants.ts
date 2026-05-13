@@ -26,5 +26,7 @@ export const ALLOWED_EMAILS = [
   "nirav.sidhpura@vianaar.com",
   "salony.porwal@vianaar.com",
   "rudrankk.banerjii@vianaar.com",
-  "bibek.sen@vianaar.com"
+  "bibek.sen@vianaar.com",
+  "varun.nagpal@vianaar.com",
+  "naina.nagpal@vianaar.com"
 ];
