@@ -1,49 +1,331 @@
 [
-  {"n": 1, "wd_gf": "/assets/v01_gf_wd.webp", "wd_ff": "/assets/v01_ff_wd.webp", "wod_gf": "/assets/v01_gf_wod.webp", "wod_ff": "/assets/v01_ff_wod.webp"},
-  {"n": 2, "wd_gf": "/assets/v02_gf_wd.webp", "wd_ff": "/assets/v02_ff_wd.webp", "wod_gf": "/assets/v02_gf_wod.webp", "wod_ff": "/assets/v02_ff_wod.webp"},
-  {"n": 3, "wd_gf": "/assets/v03_gf_wd.webp", "wd_ff": "/assets/v03_ff_wd.webp", "wod_gf": "/assets/v03_gf_wod.webp", "wod_ff": "/assets/v03_ff_wod.webp"},
-  {"n": 4, "wd_gf": "/assets/v04_gf_wd.webp", "wd_ff": "/assets/v04_ff_wd.webp", "wod_gf": "/assets/v04_gf_wod.webp", "wod_ff": "/assets/v04_ff_wod.webp"},
-  {"n": 5, "wd_gf": "/assets/v05_gf_wd.webp", "wd_ff": "/assets/v05_ff_wd.webp", "wod_gf": "/assets/v05_gf_wod.webp", "wod_ff": "/assets/v05_ff_wod.webp"},
-  {"n": 6, "wd_gf": "/assets/v06_gf_wd.webp", "wd_ff": "/assets/v06_ff_wd.webp", "wod_gf": "/assets/v06_gf_wod.webp", "wod_ff": "/assets/v06_ff_wod.webp"},
-  {"n": 7, "wd_gf": "/assets/v07_gf_wd.webp", "wd_ff": "/assets/v07_ff_wd.webp", "wod_gf": "/assets/v07_gf_wod.webp", "wod_ff": "/assets/v07_ff_wod.webp"},
-  {"n": 8, "wd_gf": "/assets/v08_gf_wd.webp", "wd_ff": "/assets/v08_ff_wd.webp", "wod_gf": "/assets/v08_gf_wod.webp", "wod_ff": "/assets/v08_ff_wod.webp"},
-  {"n": 9, "wd_gf": "/assets/v09_gf_wd.webp", "wd_ff": "/assets/v09_ff_wd.webp", "wod_gf": "/assets/v09_gf_wod.webp", "wod_ff": "/assets/v09_ff_wod.webp"},
-  {"n": 10, "wd_gf": "/assets/v10_gf_wd.webp", "wd_ff": "/assets/v10_ff_wd.webp", "wod_gf": "/assets/v10_gf_wod.webp", "wod_ff": "/assets/v10_ff_wod.webp"},
-  {"n": 11, "wd_gf": "/assets/v11_gf_wd.webp", "wd_ff": "/assets/v11_ff_wd.webp", "wod_gf": "/assets/v11_gf_wod.webp", "wod_ff": "/assets/v11_ff_wod.webp"},
-  {"n": 12, "wd_gf": "/assets/v12_gf_wd.webp", "wd_ff": "/assets/v12_ff_wd.webp", "wod_gf": "/assets/v12_gf_wod.webp", "wod_ff": "/assets/v12_ff_wod.webp"},
-  {"n": 14, "wd_gf": "/assets/v14_gf_wd.webp", "wd_ff": "/assets/v14_ff_wd.webp", "wod_gf": "/assets/v14_gf_wod.webp", "wod_ff": "/assets/v14_ff_wod.webp"},
-  {"n": 15, "wd_gf": "/assets/v15_gf_wd.webp", "wd_ff": "/assets/v15_ff_wd.webp", "wod_gf": "/assets/v15_gf_wod.webp", "wod_ff": "/assets/v15_ff_wod.webp"},
-  {"n": 16, "wd_gf": "/assets/v16_gf_wd.webp", "wd_ff": "/assets/v16_ff_wd.webp", "wod_gf": "/assets/v16_gf_wod.webp", "wod_ff": "/assets/v16_ff_wod.webp"},
-  {"n": 17, "wd_gf": "/assets/v17_gf_wd.webp", "wd_ff": "/assets/v17_ff_wd.webp", "wod_gf": "/assets/v17_gf_wod.webp", "wod_ff": "/assets/v17_ff_wod.webp"},
-  {"n": 18, "wd_gf": "/assets/v18_gf_wd.webp", "wd_ff": "/assets/v18_ff_wd.webp", "wod_gf": "/assets/v18_gf_wod.webp", "wod_ff": "/assets/v18_ff_wod.webp"},
-  {"n": 19, "wd_gf": "/assets/v19_gf_wd.webp", "wd_ff": "/assets/v19_ff_wd.webp", "wod_gf": "/assets/v19_gf_wod.webp", "wod_ff": "/assets/v19_ff_wod.webp"},
-  {"n": 20, "wd_gf": "/assets/v20_gf_wd.webp", "wd_ff": "/assets/v20_ff_wd.webp", "wod_gf": "/assets/v20_gf_wod.webp", "wod_ff": "/assets/v20_ff_wod.webp"},
-  {"n": 21, "wd_gf": "/assets/v21_gf_wd.webp", "wd_ff": "/assets/v21_ff_wd.webp", "wod_gf": "/assets/v21_gf_wod.webp", "wod_ff": "/assets/v21_ff_wod.webp"},
-  {"n": 22, "wd_gf": "/assets/v22_gf_wd.webp", "wd_ff": "/assets/v22_ff_wd.webp", "wod_gf": "/assets/v22_gf_wod.webp", "wod_ff": "/assets/v22_ff_wod.webp"},
-  {"n": 23, "wd_gf": "/assets/v23_gf_wd.webp", "wd_ff": "/assets/v23_ff_wd.webp", "wod_gf": "/assets/v23_gf_wod.webp", "wod_ff": "/assets/v23_ff_wod.webp"},
-  {"n": 24, "wd_gf": "/assets/v24_gf_wd.webp", "wd_ff": "/assets/v24_ff_wd.webp", "wod_gf": "/assets/v24_gf_wod.webp", "wod_ff": "/assets/v24_ff_wod.webp"},
-  {"n": 25, "wd_gf": "/assets/v25_gf_wd.webp", "wd_ff": "/assets/v25_ff_wd.webp", "wod_gf": "/assets/v25_gf_wod.webp", "wod_ff": "/assets/v25_ff_wod.webp"},
-  {"n": 26, "wd_gf": "/assets/v26_gf_wd.webp", "wd_ff": "/assets/v26_ff_wd.webp", "wod_gf": "/assets/v26_gf_wod.webp", "wod_ff": "/assets/v26_ff_wod.webp"},
-  {"n": 27, "wd_gf": "/assets/v27_gf_wd.webp", "wd_ff": "/assets/v27_ff_wd.webp", "wod_gf": "/assets/v27_gf_wod.webp", "wod_ff": "/assets/v27_ff_wod.webp"},
-  {"n": 28, "wd_gf": "/assets/v28_gf_wd.webp", "wd_ff": "/assets/v28_ff_wd.webp", "wod_gf": "/assets/v28_gf_wod.webp", "wod_ff": "/assets/v28_ff_wod.webp"},
-  {"n": 29, "wd_gf": "/assets/v29_gf_wd.webp", "wd_ff": "/assets/v29_ff_wd.webp", "wod_gf": "/assets/v29_gf_wod.webp", "wod_ff": "/assets/v29_ff_wod.webp"},
-  {"n": 30, "wd_gf": "/assets/v30_gf_wd.webp", "wd_ff": "/assets/v30_ff_wd.webp", "wod_gf": "/assets/v30_ff_wod.webp", "wod_ff": "/assets/v30_ff_wod.webp"},
-  {"n": 31, "wd_gf": "/assets/v31_gf_wd.webp", "wd_ff": "/assets/v31_ff_wd.webp", "wod_gf": "/assets/v31_gf_wod.webp", "wod_ff": "/assets/v31_ff_wod.webp"},
-  {"n": 32, "wd_gf": "/assets/v32_gf_wd.webp", "wd_ff": "/assets/v32_ff_wd.webp", "wod_gf": "/assets/v32_gf_wod.webp", "wod_ff": "/assets/v32_ff_wod.webp"},
-  {"n": 33, "wd_gf": "/assets/v33_gf_wd.webp", "wd_ff": "/assets/v33_ff_wd.webp", "wod_gf": "/assets/v33_gf_wod.webp", "wod_ff": "/assets/v33_ff_wod.webp"},
-  {"n": 34, "wd_gf": "/assets/v34_gf_wd.webp", "wd_ff": "/assets/v34_ff_wd.webp", "wod_gf": "/assets/v34_gf_wod.webp", "wod_ff": "/assets/v34_ff_wod.webp"},
-  {"n": 35, "wd_gf": "/assets/v35_gf_wd.webp", "wd_ff": "/assets/v35_ff_wd.webp", "wod_gf": "/assets/v35_gf_wod.webp", "wod_ff": "/assets/v35_ff_wod.webp"},
-  {"n": 36, "wd_gf": "/assets/v36_gf_wd.webp", "wd_ff": "/assets/v36_ff_wd.webp", "wod_gf": "/assets/v36_gf_wod.webp", "wod_ff": "/assets/v36_ff_wod.webp"},
-  {"n": 37, "wd_gf": "/assets/v37_gf_wd.webp", "wd_ff": "/assets/v37_ff_wd.webp", "wod_gf": "/assets/v37_gf_wod.webp", "wod_ff": "/assets/v37_ff_wod.webp"},
-  {"n": 38, "wd_gf": "/assets/v38_gf_wd.webp", "wd_ff": "/assets/v38_ff_wd.webp", "wod_gf": "/assets/v38_gf_wod.webp", "wod_ff": "/assets/v38_ff_wod.webp"},
-  {"n": 39, "wd_gf": "/assets/v39_gf_wd.webp", "wd_ff": "/assets/v39_ff_wd.webp", "wod_gf": "/assets/v39_gf_wod.webp", "wod_ff": "/assets/v39_ff_wod.webp"},
-  {"n": 40, "wd_gf": "/assets/v40_gf_wd.webp", "wd_ff": "/assets/v40_ff_wd.webp", "wod_gf": "/assets/v40_gf_wod.webp", "wod_ff": "/assets/v40_ff_wod.webp"},
-  {"n": 41, "wd_gf": "/assets/v41_gf_wd.webp", "wd_ff": "/assets/v41_ff_wd.webp", "wod_gf": "/assets/v41_gf_wod.webp", "wod_ff": "/assets/v41_ff_wod.webp"},
-  {"n": 42, "wd_gf": "/assets/v42_gf_wd.webp", "wd_ff": "/assets/v42_ff_wd.webp", "wod_gf": "/assets/v42_gf_wod.webp", "wod_ff": "/assets/v42_ff_wod.webp"},
-  {"n": 43, "wd_gf": "/assets/v43_gf_wd.webp", "wd_ff": "/assets/v43_ff_wd.webp", "wod_gf": "/assets/v43_gf_wod.webp", "wod_ff": "/assets/v43_ff_wod.webp"},
-  {"n": 44, "wd_gf": "/assets/v44_gf_wd.webp", "wd_ff": "/assets/v44_ff_wd.webp", "wod_gf": "/assets/v44_gf_wod.webp", "wod_ff": "/assets/v44_ff_wod.webp"},
-  {"n": 45, "wd_gf": "/assets/v45_gf_wd.webp", "wd_ff": "/assets/v45_ff_wd.webp", "wod_gf": "/assets/v45_gf_wod.webp", "wod_ff": "/assets/v45_ff_wod.webp"},
-  {"n": 46, "wd_gf": "/assets/v46_gf_wd.webp", "wd_ff": "/assets/v46_ff_wd.webp", "wod_gf": "/assets/v46_gf_wod.webp", "wod_ff": "/assets/v46_ff_wod.webp"},
-  {"n": 47, "wd_gf": "/assets/v47_gf_wd.webp", "wd_ff": "/assets/v47_ff_wd.webp", "wod_gf": "/assets/v47_gf_wod.webp", "wod_ff": "/assets/v47_ff_wod.webp"},
-  {"n": 48, "wd_gf": "/assets/v48_gf_wd.webp", "wd_ff": "/assets/v48_ff_wd.webp", "wod_gf": "/assets/v48_gf_wod.webp", "wod_ff": "/assets/v48_ff_wod.webp"}
+{
+"n":1,
+"wd_gf":"./assets/plans/v01_wd_gf.webp",
+"wd_ff":"./assets/plans/v01_wd_ff.webp",
+"wod_gf":"./assets/plans/v01_wod_gf.webp",
+"wod_ff":"./assets/plans/v01_wod_ff.webp"
+},
+{
+"n":2,
+"wd_gf":"./assets/plans/v02_wd_gf.webp",
+"wd_ff":"./assets/plans/v02_wd_ff.webp",
+"wod_gf":"./assets/plans/v02_wod_gf.webp",
+"wod_ff":"./assets/plans/v02_wod_ff.webp"
+},
+{
+"n":3,
+"wd_gf":"./assets/plans/v03_wd_gf.webp",
+"wd_ff":"./assets/plans/v03_wd_ff.webp",
+"wod_gf":"./assets/plans/v03_wod_gf.webp",
+"wod_ff":"./assets/plans/v03_wod_ff.webp"
+},
+{
+"n":4,
+"wd_gf":"./assets/plans/v04_wd_gf.webp",
+"wd_ff":"./assets/plans/v04_wd_ff.webp",
+"wod_gf":"./assets/plans/v04_wod_gf.webp",
+"wod_ff":"./assets/plans/v04_wod_ff.webp"
+},
+{
+"n":5,
+"wd_gf":"./assets/plans/v05_wd_gf.webp",
+"wd_ff":"./assets/plans/v05_wd_ff.webp",
+"wod_gf":"./assets/plans/v05_wod_gf.webp",
+"wod_ff":"./assets/plans/v05_wod_ff.webp"
+},
+{
+"n":6,
+"wd_gf":"./assets/plans/v06_wd_gf.webp",
+"wd_ff":"./assets/plans/v06_wd_ff.webp",
+"wod_gf":"./assets/plans/v06_wod_gf.webp",
+"wod_ff":"./assets/plans/v06_wod_ff.webp"
+},
+{
+"n":7,
+"wd_gf":"./assets/plans/v07_wd_gf.webp",
+"wd_ff":"./assets/plans/v07_wd_ff.webp",
+"wod_gf":"./assets/plans/v07_wod_gf.webp",
+"wod_ff":"./assets/plans/v07_wod_ff.webp"
+},
+{
+"n":8,
+"wd_gf":"./assets/plans/v08_wd_gf.webp",
+"wd_ff":"./assets/plans/v08_wd_ff.webp",
+"wod_gf":"./assets/plans/v08_wod_gf.webp",
+"wod_ff":"./assets/plans/v08_wod_ff.webp"
+},
+{
+"n":9,
+"wd_gf":"./assets/plans/v09_wd_gf.webp",
+"wd_ff":"./assets/plans/v09_wd_ff.webp",
+"wod_gf":"./assets/plans/v09_wod_gf.webp",
+"wod_ff":"./assets/plans/v09_wod_ff.webp"
+},
+{
+"n":10,
+"wd_gf":"./assets/plans/v10_wd_gf.webp",
+"wd_ff":"./assets/plans/v10_wd_ff.webp",
+"wod_gf":"./assets/plans/v10_wod_gf.webp",
+"wod_ff":"./assets/plans/v10_wod_ff.webp"
+},
+{
+"n":11,
+"wd_gf":"./assets/plans/v11_wd_gf.webp",
+"wd_ff":"./assets/plans/v11_wd_ff.webp",
+"wod_gf":"./assets/plans/v11_wod_gf.webp",
+"wod_ff":"./assets/plans/v11_wod_ff.webp"
+},
+{
+"n":12,
+"wd_gf":"./assets/plans/v12_wd_gf.webp",
+"wd_ff":"./assets/plans/v12_wd_ff.webp",
+"wod_gf":"./assets/plans/v12_wod_gf.webp",
+"wod_ff":"./assets/plans/v12_wod_ff.webp"
+},
+{
+"n":14,
+"wd_gf":"./assets/plans/v14_wd_gf.webp",
+"wd_ff":"./assets/plans/v14_wd_ff.webp",
+"wod_gf":"./assets/plans/v14_wod_gf.webp",
+"wod_ff":"./assets/plans/v14_wod_ff.webp"
+},
+{
+"n":15,
+"wd_gf":"./assets/plans/v15_wd_gf.webp",
+"wd_ff":"./assets/plans/v15_wd_ff.webp",
+"wod_gf":"./assets/plans/v15_wod_gf.webp",
+"wod_ff":"./assets/plans/v15_wod_ff.webp"
+},
+{
+"n":16,
+"wd_gf":"./assets/plans/v16_wd_gf.webp",
+"wd_ff":"./assets/plans/v16_wd_ff.webp",
+"wod_gf":"./assets/plans/v16_wod_gf.webp",
+"wod_ff":"./assets/plans/v16_wod_ff.webp"
+},
+{
+"n":17,
+"wd_gf":"./assets/plans/v17_wd_gf.webp",
+"wd_ff":"./assets/plans/v17_wd_ff.webp",
+"wod_gf":"./assets/plans/v17_wod_gf.webp",
+"wod_ff":"./assets/plans/v17_wod_ff.webp"
+},
+{
+"n":18,
+"wd_gf":"./assets/plans/v18_wd_gf.webp",
+"wd_ff":"./assets/plans/v18_wd_ff.webp",
+"wod_gf":"./assets/plans/v18_wod_gf.webp",
+"wod_ff":"./assets/plans/v18_wod_ff.webp"
+},
+{
+"n":19,
+"wd_gf":"./assets/plans/v19_wd_gf.webp",
+"wd_ff":"./assets/plans/v19_wd_ff.webp",
+"wod_gf":"./assets/plans/v19_wod_gf.webp",
+"wod_ff":"./assets/plans/v19_wod_ff.webp"
+},
+{
+"n":20,
+"wd_gf":"./assets/plans/v20_wd_gf.webp",
+"wd_ff":"./assets/plans/v20_wd_ff.webp",
+"wod_gf":"./assets/plans/v20_wod_gf.webp",
+"wod_ff":"./assets/plans/v20_wod_ff.webp"
+},
+{
+"n":21,
+"wd_gf":"./assets/plans/v21_wd_gf.webp",
+"wd_ff":"./assets/plans/v21_wd_ff.webp",
+"wod_gf":"./assets/plans/v21_wod_gf.webp",
+"wod_ff":"./assets/plans/v21_wod_ff.webp"
+},
+{
+"n":22,
+"wd_gf":"./assets/plans/v22_wd_gf.webp",
+"wd_ff":"./assets/plans/v22_wd_ff.webp",
+"wod_gf":"./assets/plans/v22_wod_gf.webp",
+"wod_ff":"./assets/plans/v22_wod_ff.webp"
+},
+{
+"n":23,
+"wd_gf":"./assets/plans/v23_wd_gf.webp",
+"wd_ff":"./assets/plans/v23_wd_ff.webp",
+"wod_gf":"./assets/plans/v23_wod_gf.webp",
+"wod_ff":"./assets/plans/v23_wod_ff.webp"
+},
+{
+"n":24,
+"wd_gf":"./assets/plans/v24_wd_gf.webp",
+"wd_ff":"./assets/plans/v24_wd_ff.webp",
+"wod_gf":"./assets/plans/v24_wod_gf.webp",
+"wod_ff":"./assets/plans/v24_wod_ff.webp"
+},
+{
+"n":25,
+"wd_gf":"./assets/plans/v25_wd_gf.webp",
+"wd_ff":"./assets/plans/v25_wd_ff.webp",
+"wod_gf":"./assets/plans/v25_wod_gf.webp",
+"wod_ff":"./assets/plans/v25_wod_ff.webp"
+},
+{
+"n":26,
+"wd_gf":"./assets/plans/v26_wd_gf.webp",
+"wd_ff":"./assets/plans/v26_wd_ff.webp",
+"wod_gf":"./assets/plans/v26_wod_gf.webp",
+"wod_ff":"./assets/plans/v26_wod_ff.webp"
+},
+{
+"n":27,
+"wd_gf":"./assets/plans/v27_wd_gf.webp",
+"wd_ff":"./assets/plans/v27_wd_ff.webp",
+"wod_gf":"./assets/plans/v27_wod_gf.webp",
+"wod_ff":"./assets/plans/v27_wod_ff.webp"
+},
+{
+"n":28,
+"wd_gf":"./assets/plans/v28_wd_gf.webp",
+"wd_ff":"./assets/plans/v28_wd_ff.webp",
+"wod_gf":"./assets/plans/v28_wod_gf.webp",
+"wod_ff":"./assets/plans/v28_wod_ff.webp"
+},
+{
+"n":29,
+"wd_gf":"./assets/plans/v29_wd_gf.webp",
+"wd_ff":"./assets/plans/v29_wd_ff.webp",
+"wod_gf":"./assets/plans/v29_wod_gf.webp",
+"wod_ff":"./assets/plans/v29_wod_ff.webp"
+},
+{
+"n":30,
+"wd_gf":"./assets/plans/v30_wd_gf.webp",
+"wd_ff":"./assets/plans/v30_wd_ff.webp",
+"wod_gf":"./assets/plans/v30_wod_gf.webp",
+"wod_ff":"./assets/plans/v30_wod_ff.webp"
+},
+{
+"n":31,
+"wd_gf":"./assets/plans/v31_wd_gf.webp",
+"wd_ff":"./assets/plans/v31_wd_ff.webp",
+"wod_gf":"./assets/plans/v31_wod_gf.webp",
+"wod_ff":"./assets/plans/v31_wod_ff.webp"
+},
+{
+"n":32,
+"wd_gf":"./assets/plans/v32_wd_gf.webp",
+"wd_ff":"./assets/plans/v32_wd_ff.webp",
+"wod_gf":"./assets/plans/v32_wod_gf.webp",
+"wod_ff":"./assets/plans/v32_wod_ff.webp"
+},
+{
+"n":33,
+"wd_gf":"./assets/plans/v33_wd_gf.webp",
+"wd_ff":"./assets/plans/v33_wd_ff.webp",
+"wod_gf":"./assets/plans/v33_wod_gf.webp",
+"wod_ff":"./assets/plans/v33_wod_ff.webp"
+},
+{
+"n":34,
+"wd_gf":"./assets/plans/v34_wd_gf.webp",
+"wd_ff":"./assets/plans/v34_wd_ff.webp",
+"wod_gf":"./assets/plans/v34_wod_gf.webp",
+"wod_ff":"./assets/plans/v34_wod_ff.webp"
+},
+{
+"n":35,
+"wd_gf":"./assets/plans/v35_wd_gf.webp",
+"wd_ff":"./assets/plans/v35_wd_ff.webp",
+"wod_gf":"./assets/plans/v35_wod_gf.webp",
+"wod_ff":"./assets/plans/v35_wod_ff.webp"
+},
+{
+"n":36,
+"wd_gf":"./assets/plans/v36_wd_gf.webp",
+"wd_ff":"./assets/plans/v36_wd_ff.webp",
+"wod_gf":"./assets/plans/v36_wod_gf.webp",
+"wod_ff":"./assets/plans/v36_wod_ff.webp"
+},
+{
+"n":37,
+"wd_gf":"./assets/plans/v37_wd_gf.webp",
+"wd_ff":"./assets/plans/v37_wd_ff.webp",
+"wod_gf":"./assets/plans/v37_wod_gf.webp",
+"wod_ff":"./assets/plans/v37_wod_ff.webp"
+},
+{
+"n":38,
+"wd_gf":"./assets/plans/v38_wd_gf.webp",
+"wd_ff":"./assets/plans/v38_wd_ff.webp",
+"wod_gf":"./assets/plans/v38_wod_gf.webp",
+"wod_ff":"./assets/plans/v38_wod_ff.webp"
+},
+{
+"n":39,
+"wd_gf":"./assets/plans/v39_wd_gf.webp",
+"wd_ff":"./assets/plans/v39_wd_ff.webp",
+"wod_gf":"./assets/plans/v39_wod_gf.webp",
+"wod_ff":"./assets/plans/v39_wod_ff.webp"
+},
+{
+"n":40,
+"wd_gf":"./assets/plans/v40_wd_gf.webp",
+"wd_ff":"./assets/plans/v40_wd_ff.webp",
+"wod_gf":"./assets/plans/v40_wod_gf.webp",
+"wod_ff":"./assets/plans/v40_wod_ff.webp"
+},
+{
+"n":41,
+"wd_gf":"./assets/plans/v41_wd_gf.webp",
+"wd_ff":"./assets/plans/v41_wd_ff.webp",
+"wod_gf":"./assets/plans/v41_wod_gf.webp",
+"wod_ff":"./assets/plans/v41_wod_ff.webp"
+},
+{
+"n":42,
+"wd_gf":"./assets/plans/v42_wd_gf.webp",
+"wd_ff":"./assets/plans/v42_wd_ff.webp",
+"wod_gf":"./assets/plans/v42_wod_gf.webp",
+"wod_ff":"./assets/plans/v42_wod_ff.webp"
+},
+{
+"n":43,
+"wd_gf":"./assets/plans/v43_wd_gf.webp",
+"wd_ff":"./assets/plans/v43_wd_ff.webp",
+"wod_gf":"./assets/plans/v43_wod_gf.webp",
+"wod_ff":"./assets/plans/v43_wod_ff.webp"
+},
+{
+"n":44,
+"wd_gf":"./assets/plans/v44_wd_gf.webp",
+"wd_ff":"./assets/plans/v44_wd_ff.webp",
+"wod_gf":"./assets/plans/v44_wod_gf.webp",
+"wod_ff":"./assets/plans/v44_wod_ff.webp"
+},
+{
+"n":45,
+"wd_gf":"./assets/plans/v45_wd_gf.webp",
+"wd_ff":"./assets/plans/v45_wd_ff.webp",
+"wod_gf":"./assets/plans/v45_wod_gf.webp",
+"wod_ff":"./assets/plans/v45_wod_ff.webp"
+},
+{
+"n":46,
+"wd_gf":"./assets/plans/v46_wd_gf.webp",
+"wd_ff":"./assets/plans/v46_wd_ff.webp",
+"wod_gf":"./assets/plans/v46_wod_gf.webp",
+"wod_ff":"./assets/plans/v46_wod_ff.webp"
+},
+{
+"n":47,
+"wd_gf":"./assets/plans/v47_wd_gf.webp",
+"wd_ff":"./assets/plans/v47_wd_ff.webp",
+"wod_gf":"./assets/plans/v47_wod_gf.webp",
+"wod_ff":"./assets/plans/v47_wod_ff.webp"
+},
+{
+"n":48,
+"wd_gf":"./assets/plans/v48_wd_gf.webp",
+"wd_ff":"./assets/plans/v48_wd_ff.webp",
+"wod_gf":"./assets/plans/v48_wod_gf.webp",
+"wod_ff":"./assets/plans/v48_wod_ff.webp"
+}
 ]

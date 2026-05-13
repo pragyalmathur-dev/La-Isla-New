@@ -42,7 +42,7 @@ const PROJECT_RENDERS: Record<string, string | string[]> = {
 };
 
 // Final Anchor from user calibration
-const ANCHOR = { lat: 14.95017, lng: 74.05339 };
+const ANCHOR = { lat: 14.94961, lng: 74.05176 };
 
 const BEACH_LOC = { lat: 14.961497, lng: 74.048541 };
 const XANDREM_BEACH_LOC = { lat: 14.939333, lng: 74.045792 };
@@ -268,15 +268,15 @@ const NH66_PATH: L.LatLngExpression[] = [
 
 // Road Coordinates (Finetuned based on visual alignment in screenshots)
 const ENTRY_ROAD_PATH: L.LatLngExpression[] = [
-  [14.950220, 74.053487],
-  [14.950326, 74.053734],
-  [14.950404, 74.053942],
-  [14.950486, 74.054136],
-  [14.950596, 74.054340],
-  [14.950712, 74.054538],
-  [14.950819, 74.054747],
-  [14.950895, 74.054915],
-  [14.951028, 74.055109]
+  [14.949610, 74.051760],
+  [14.949850, 74.052200],
+  [14.950100, 74.052600],
+  [14.950350, 74.053100],
+  [14.950600, 74.053600],
+  [14.950850, 74.054100],
+  [14.951100, 74.054600],
+  [14.951350, 74.055100],
+  [14.951600, 74.055600]
 ];
 
 // Entry's pixel position in normalized fractions (from original source)
@@ -710,7 +710,7 @@ export default function App() {
           />
 
           <Marker 
-            position={[14.9506, 74.0544]}
+            position={[14.9508, 74.0541]}
             icon={L.divIcon({ className: 'bg-transparent', iconSize: [1, 1] })}
           >
             <Tooltip permanent={true} direction="top" className="custom-tooltip">
