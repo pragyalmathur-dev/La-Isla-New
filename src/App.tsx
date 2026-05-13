@@ -18,7 +18,7 @@ interface Villa {
 
 // --- Constants & Config ---
 const REPO_BASE = '/';
-const ASSET_SITEPLAN = '/assets/siteplan.webp';
+const ASSET_SITEPLAN = '/assets/plans/siteplan.webp';
 const ASSET_VILLAS_JSON = '/villas.json';
 
 const PROJECT_RENDERS: Record<string, string | string[]> = {
@@ -42,7 +42,7 @@ const PROJECT_RENDERS: Record<string, string | string[]> = {
 };
 
 // Final Anchor from user calibration
-const ANCHOR = { lat: 14.94961, lng: 74.05176 };
+const ANCHOR = { lat: 14.94975, lng: 74.05185 };
 
 const BEACH_LOC = { lat: 14.961497, lng: 74.048541 };
 const XANDREM_BEACH_LOC = { lat: 14.939333, lng: 74.045792 };
@@ -351,10 +351,10 @@ export default function App() {
   const [config, setConfig] = useState({
     scaleH: 254.40,
     scaleW: 423.80,
-    rotation: -95.65,
+    rotation: -89.62,
     opacity: 0.82,
-    anchorLat: 14.94961,
-    anchorLng: 74.05176
+    anchorLat: 14.94975,
+    anchorLng: 74.05185
   });
 
   useEffect(() => {
