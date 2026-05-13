@@ -18,26 +18,26 @@ interface Villa {
 
 // --- Constants & Config ---
 const REPO_BASE = 'https://raw.githubusercontent.com/pragyalmathur-dev/La-Isla/main/';
-const ASSET_SITEPLAN = `${REPO_BASE}siteplan.webp`;
+const ASSET_SITEPLAN = `${REPO_BASE}assets/siteplan.webp`;
 const ASSET_VILLAS_JSON = `${REPO_BASE}villas.json`;
 
 const PROJECT_RENDERS: Record<string, string | string[]> = {
-  'Aerial View': `${REPO_BASE}aerial_view.jpg`,
+  'Aerial View': '/assets/aerial_view.jpg',
   '2 BHK': [
-    `${REPO_BASE}2bhk_balcony.jpg`,
-    `${REPO_BASE}2bhk_exterior.jpg`,
-    `${REPO_BASE}2bhk_facade.jpg`
+    '/assets/2bhk_balcony.jpg',
+    '/assets/2bhk_exterior.jpg',
+    '/assets/2bhk_facade.jpg'
   ],
   '3 BHK': [
-    `${REPO_BASE}3bhk_ext_1.jpg`,
-    `${REPO_BASE}3bhk_terrace.jpg`,
-    `${REPO_BASE}3bhk_ext_2.jpg`
+    '/assets/3bhk_ext_1.jpg',
+    '/assets/3bhk_terrace.jpg',
+    '/assets/3bhk_ext_2.jpg'
   ],
   '4 BHK': [
-    `${REPO_BASE}4bhk_exterior.jpg`,
-    `${REPO_BASE}4bhk_facade.jpg`,
-    `${REPO_BASE}4bhk_balcony.jpg`,
-    `${REPO_BASE}4bhk_terrace.jpg`
+    '/assets/4bhk_exterior.jpg',
+    '/assets/4bhk_facade.jpg',
+    '/assets/4bhk_balcony.jpg',
+    '/assets/4bhk_terrace.jpg'
   ]
 };
 
