@@ -17,9 +17,9 @@ interface Villa {
 }
 
 // --- Constants & Config ---
-const REPO_BASE = 'https://raw.githubusercontent.com/pragyalmathur-dev/La-Isla/main/';
-const ASSET_SITEPLAN = `${REPO_BASE}assets/siteplan.webp`;
-const ASSET_VILLAS_JSON = `${REPO_BASE}villas.json`;
+const REPO_BASE = '/';
+const ASSET_SITEPLAN = '/assets/siteplan.webp';
+const ASSET_VILLAS_JSON = '/villas.json';
 
 const PROJECT_RENDERS: Record<string, string | string[]> = {
   'Aerial View': '/assets/aerial_view.jpg',
@@ -318,7 +318,7 @@ import { ALLOWED_EMAILS } from './constants';
 
 export default function App() {
   const [emailInput, setEmailInput] = useState('');
-  const [userEmail, setUserEmail] = useState<string | null>(localStorage.getItem('vianaar_auth_email'));
+  const [userEmail, setUserEmail] = useState<string | null>(sessionStorage.getItem('vianaar_auth_email'));
   const [accessDenied, setAccessDenied] = useState(false);
 
   const handleLogin = (e?: React.FormEvent) => {
@@ -326,17 +326,11 @@ export default function App() {
     const normalizedEmail = emailInput.toLowerCase().trim();
     if (ALLOWED_EMAILS.includes(normalizedEmail)) {
       setUserEmail(normalizedEmail);
-      localStorage.setItem('vianaar_auth_email', normalizedEmail);
+      sessionStorage.setItem('vianaar_auth_email', normalizedEmail);
       setAccessDenied(false);
     } else {
       setAccessDenied(true);
     }
-  };
-
-  const handleLogout = () => {
-    setUserEmail(null);
-    localStorage.removeItem('vianaar_auth_email');
-    setEmailInput('');
   };
 
   const [villas, setVillas] = useState<Villa[]>([]);
@@ -1221,15 +1215,6 @@ export default function App() {
       `}} />
       <Analytics />
       <SpeedInsights />
-      
-      {/* Logout Button */}
-      <button 
-        onClick={handleLogout}
-        className="fixed top-4 right-4 z-[2000] bg-white p-3 rounded-full shadow-lg border border-gray-100 hover:bg-gray-50 transition-colors group cursor-pointer"
-        title="Logout"
-      >
-        <LogOut className="w-5 h-5 text-gray-600 group-hover:text-red-600 transition-colors" />
-      </button>
     </div>
   );
 }
