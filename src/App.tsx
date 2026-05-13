@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, ImageOverlay, CircleMarker, Tooltip, Polyline,
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { motion, AnimatePresence } from 'motion/react';
-import { Map as MapIcon, Layers, Maximize, Navigation, Info, ChevronRight, X, Ruler, Plus, Minus, Move, Menu } from 'lucide-react';
+import { Map as MapIcon, Layers, Maximize, Navigation, Info, ChevronRight, X, Ruler, Plus, Minus, Move, Menu, LogOut } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
@@ -236,7 +236,31 @@ const getBoundsFromCenter = (centerLat: number, centerLng: number, heightMeters:
   ] as L.LatLngBoundsExpression;
 };
 
+import { ALLOWED_EMAILS } from './constants';
+
 export default function App() {
+  const [emailInput, setEmailInput] = useState('');
+  const [userEmail, setUserEmail] = useState<string | null>(localStorage.getItem('vianaar_auth_email'));
+  const [accessDenied, setAccessDenied] = useState(false);
+
+  const handleLogin = (e?: React.FormEvent) => {
+    e?.preventDefault();
+    const normalizedEmail = emailInput.toLowerCase().trim();
+    if (ALLOWED_EMAILS.includes(normalizedEmail)) {
+      setUserEmail(normalizedEmail);
+      localStorage.setItem('vianaar_auth_email', normalizedEmail);
+      setAccessDenied(false);
+    } else {
+      setAccessDenied(true);
+    }
+  };
+
+  const handleLogout = () => {
+    setUserEmail(null);
+    localStorage.removeItem('vianaar_auth_email');
+    setEmailInput('');
+  };
+
   const [villas, setVillas] = useState<Villa[]>([]);
   const [selectedVilla, setSelectedVilla] = useState<Villa | null>(null);
   const [selectedRender, setSelectedRender] = useState<string | null>(null);
@@ -287,6 +311,55 @@ export default function App() {
     const path = selectedVilla[key] as string;
     return path.replace('./', REPO_BASE);
   }, [selectedVilla, floor, mode]);
+
+  if (!userEmail) {
+    return (
+      <div className="h-screen w-screen flex items-center justify-center bg-[#f1ece1] p-6 text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="max-w-md w-full bg-white p-8 rounded-3xl shadow-xl border border-[#094f39]/10"
+        >
+          <div className="mb-6 flex justify-center">
+             <div className="w-16 h-16 bg-[#094f39]/10 rounded-full flex items-center justify-center">
+                <MapIcon className="w-8 h-8 text-[#094f39]" />
+             </div>
+          </div>
+          <h1 className="text-2xl font-bold text-[#094f39] mb-2 leading-tight uppercase tracking-widest text-[20px]">Confidential Map</h1>
+          <section className="mb-4 p-4 bg-[#f8f9f8] rounded-2xl border border-gray-50">
+            <p className="text-gray-600 leading-relaxed text-sm">
+              {accessDenied 
+                ? "Access denied. Only @vianaar.com email accounts are authorized to view this map."
+                : "This is a confidential architectural resource. Please enter your company email to proceed."}
+            </p>
+          </section>
+
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div className="relative">
+              <input
+                type="email"
+                placeholder="Email Address"
+                value={emailInput}
+                onChange={(e) => setEmailInput(e.target.value)}
+                className={`w-full px-5 py-4 rounded-xl border ${accessDenied ? 'border-red-300 bg-red-50' : 'border-gray-200'} focus:outline-none focus:ring-2 focus:ring-[#094f39]/20 transition-all text-gray-800`}
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-[#094f39] text-white py-4 px-6 rounded-xl font-medium hover:bg-[#073d2c] transition-all flex items-center justify-center gap-3 shadow-lg shadow-[#094f39]/20 cursor-pointer mb-4"
+            >
+              Sign in
+            </button>
+          </form>
+
+          <div className="mt-6 text-[10px] text-gray-400 uppercase tracking-widest font-bold">
+            Vianaar Internal Security
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex h-screen w-full bg-[#f6f2ea] text-[#2f3a30] font-mulish font-light selection:bg-[#6b8e64]/30 overflow-hidden relative">
@@ -1000,6 +1073,15 @@ export default function App() {
       `}} />
       <Analytics />
       <SpeedInsights />
+      
+      {/* Logout Button */}
+      <button 
+        onClick={handleLogout}
+        className="fixed top-4 right-4 z-[2000] bg-white p-3 rounded-full shadow-lg border border-gray-100 hover:bg-gray-50 transition-colors group cursor-pointer"
+        title="Logout"
+      >
+        <LogOut className="w-5 h-5 text-gray-600 group-hover:text-red-600 transition-colors" />
+      </button>
     </div>
   );
 }
