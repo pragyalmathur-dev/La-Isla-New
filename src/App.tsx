@@ -349,12 +349,12 @@ export default function App() {
   
   // Developer Tool State
   const [config, setConfig] = useState({
-    scaleH: 363.5,
-    scaleW: 363.5 * PLAN_ASPECT,
-    rotation: -1.95,
-    opacity: 0.85,
-    anchorLat: ANCHOR.lat,
-    anchorLng: ANCHOR.lng
+    scaleH: 254.40,
+    scaleW: 423.80,
+    rotation: -95.65,
+    opacity: 0.82,
+    anchorLat: 14.94961,
+    anchorLng: 74.05176
   });
 
   useEffect(() => {
