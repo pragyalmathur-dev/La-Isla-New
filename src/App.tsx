@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, ImageOverlay, CircleMarker, Tooltip, Polyline,
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { motion, AnimatePresence } from 'motion/react';
-import { Map as MapIcon, Layers, Maximize, Navigation, Info, ChevronRight, X, Ruler, Plus, Minus, Move, Menu, LogOut, Utensils, BookOpen, Palmtree, Trophy, Church } from 'lucide-react';
+import { Map as MapIcon, Layers, Maximize, Navigation, Info, ChevronRight, X, Ruler, Plus, Minus, Move, Menu, LogOut, Utensils, BookOpen, Palmtree, Trophy, Church, Settings } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
@@ -1085,7 +1085,7 @@ export default function App() {
       )}
 
       {/* Dev Tool Toggle Button */}
-      {userEmail === 'pragyalmathur@gmail.com' && (
+      {(userEmail === 'pragyalmathur@gmail.com' || userEmail === 'pragyal.mathur@vianaar.com') && (
         <button 
           onClick={() => setShowDevTools(!showDevTools)}
           className="fixed bottom-24 right-6 z-[1000] w-12 h-12 bg-[#094f39] text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all cursor-pointer border-2 border-white/20"
